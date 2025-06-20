@@ -42,6 +42,7 @@ function renderFooterLinks(containerId, links) {
         const a = document.createElement('a');
         a.href = link.href;
         a.textContent = link.text;
+        a.target = "_blank";
         li.appendChild(a);
         container.appendChild(li);
     });
