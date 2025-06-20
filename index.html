@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="EssentialsMonitor helps you track real-time prices and availability of food, gas, and medicine during economic crises. Make smarter purchases, avoid overpaying, and stay informed.">
+    <meta name="keywords"
+        content="EssentialsMonitor, essential goods tracker, price tracker app, real-time prices, food prices, gas prices, medicine availability, local shopping, crisis essentials app">
+    <meta name="author" content="M.N. Mohamed Aman">
+
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="EssentialsMonitor – Track Real-Time Prices of Essentials">
+    <meta property="og:description"
+        content="Find accurate local prices and availability of essentials like food, gas, and medicine. EssentialsMonitor helps you shop smarter in times of crisis.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://s23010843.github.io/essentials-monitor">
+    <meta property="og:image" content="https://s23010843.github.io/essentials-monitor/assets/og-image.png">
+
+    <title>EssentialsMonitor - Ultimate Android Productivity App</title>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-chart-line"></i>
+                <span class="app_name"></span>
+            </div>
+            <div class="nav-menu" id="nav-menu">
+                <a href="/essentials-monitor" class="nav-link">Home</a>
+                <a href="#features" class="nav-link">Features</a>
+                <a href="#screenshots" class="nav-link">Screenshots</a>
+                <a href="#download" class="nav-link">Download</a>
+                <a href="#contact" class="nav-link">Contact</a>
+            </div>
+            <div class="nav-toggle" id="nav-toggle">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">Boost Your Productivity with <span class="highlight app_name"></span></h1>
+                    <p class="hero-description app_description"></p>
+                    <div class="hero-buttons">
+                        <a href="#download" class="btn btn-primary">
+                            <i class="fab fa-google-play"></i>
+                            Download Now
+                        </a>
+                        <a href="#features" class="btn btn-secondary">
+                            <i class="fas fa-play"></i>
+                            Watch Demo
+                        </a>
+                    </div>
+                    <div class="hero-stats">
+                        <div class="stat">
+                            <span class="stat-number activate_users"></span>
+                            <span class="stat-label">Active Users</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number play_store_rating"></span>
+                            <span class="stat-label">Play Store Rating</span>
+                        </div>
+                        <div class="stat">
+                            <span class="stat-number completed_users"></span>
+                            <span class="stat-label completed_info"></span>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-image">
+                    <div class="phone-mockup">
+                        <img src="/assets/images/mobile.png" alt="App Screenshot" class="app-screenshot">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section id="features" class="features">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">Powerful Features</h2>
+                <p class="section-description">Discover what makes our app stand out from the competition</p>
+            </div>
+            <div class="features-grid" id="features-grid">
+                <!-- Feature cards will be injected here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Screenshots Section -->
+    <section id="screenshots" class="screenshots">
+        <div class="container">
+            <div class="section-header">
+                <h2 class="section-title">App Screenshots</h2>
+                <p class="section-description">Take a look at our beautiful and intuitive interface</p>
+            </div>
+            <div class="screenshots-gallery" id="screenshots-gallery">
+                <!-- Screenshot items will be injected here by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Download Section -->
+    <section id="download" class="download">
+        <div class="container">
+            <div class="download-content">
+                <div class="download-text">
+                    <h2 class="download-title">Ready to Get Started?</h2>
+                    <p class="download-description">Join millions of users who have already downloaded our app and
+                        transformed their mobile experience.</p>
+                    <div class="download-badges">
+                        <a href="https://play.google.com/store/apps/details?id=com.s23010843.essentialsmonitor"
+                            class="download-badge google-play" target="_blank" rel="noopener noreferrer">
+                            <img src="/assets/images/google-play-badge-logo.svg" alt="google-play-badge-logo"
+                                height="96" width="96">
+                        </a>
+                        <a href="https://github.com/s23010843/essentials-monitor/releases/latest/download/essentialsmonitor.apk"
+                            class="download-badge direct-download">
+                            <i class="fas fa-download"></i>
+                            <div class="badge-text">
+                                <span class="badge-subtitle">Direct Download</span>
+                                <span class="badge-title">APK File (<span class="app_version"></span>)</span>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="download-info">
+                        <div class="info-item">
+                            <i class="fas fa-mobile-alt"></i>
+                            <span><span id="app-min-version"></span></span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-hdd"></i>
+                            <span><span id="app-size"></span> Download</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-star"></i>
+                            <span><span class="app_rating"></span> Rating</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="download-image">
+                    <img src="/assets/images/mobile.png" alt="App Store" class="store-image">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <!--contact.html-->
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="footer-logo">
+                        <i class="fas fa-mobile-alt"></i>
+                        <span class="app_name"></span>
+                    </div>
+                    <p class="footer-description">
+                        Transforming mobile experiences with innovative technology and beautiful design.
+                    </p>
+                    <div class="social-links" id="footer-social-links">
+                        <!-- Social links will be injected by JavaScript -->
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Product</h4>
+                    <ul class="footer-links" id="footer-product-links">
+                        <!-- Product links will be injected by JavaScript -->
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Support</h4>
+                    <ul class="footer-links" id="footer-support-links">
+                        <!-- Support links will be injected by JavaScript -->
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4 class="footer-title">Company</h4>
+                    <ul class="footer-links" id="footer-company-links">
+                        <!-- Company links will be injected by JavaScript -->
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>
+                    Copyright &copy;
+                    <span id="current-year"></span> <span class="app_name"></span>. All rights reserved.
+                </p>
+            </div>
+        </div>
+    </footer>
+
+
+    <!-- Image Modal -->
+    <div id="image-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <img id="modal-image" src="" alt="Screenshot">
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script src="assets/js/connect.js"></script>
+    <script src="assets/js/app.js"></script>
+    <script src="assets/js/features.js"></script>
+    <script src="assets/js/screenshot.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/footer.js"></script>
+</body>
+
+</html>

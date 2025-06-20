@@ -54,3 +54,16 @@ temp/
 misc.xml
 deploymentTargetDropDown.xml
 render.experimental.xml
+
+# Miscellaneous
+*.orig
+*.swp
+*.bak
+*.tmp
+*.pid
+
+# Temporary disable files
+screenshots/
+*.json
+api.xml
+contact.html

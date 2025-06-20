@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">EssentialsMonitor</string>
+    <string name="app_version">v1.0.1</string>
+    <string name="app_rating">4.8/5</string>
+    <string name="app_description">During economic crises, prices of essential items like food, gas, and medicine can fluctuate rapidly, making it hard for people to find accurate prices or locate where to buy them. This app helps users track real-time prices and availability of essential goods in their area, ensuring they make informed purchasing decisions and avoid overpaying.</string>
+
+    <string name="activate_users">100K+</string>
+    <string name="play_store_rating">4.9★</string>
+
+    <string name="completed_users">50M+</string>
+    <string name="completed_info">Prices Tracked</string>
+
+    <string name="title_activity_maps">Find Location</string>
 </resources>
