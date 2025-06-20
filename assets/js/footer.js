@@ -1,8 +1,8 @@
 // Social links
 const socialLinks = [
-    { href: "https://github.io/s23010843/essentials-moniter", icon: "fab fa-github" }
-    // Add more social links as needed
+    { href: "https://github.com/s23010843/essentials-monitor", icon: "fab fa-github" }
 ];
+
 const socialLinksContainer = document.getElementById('footer-social-links');
 socialLinks.forEach(link => {
     const a = document.createElement('a');

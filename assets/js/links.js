@@ -1,0 +1,1 @@
+document.getElementById('figma-link').href = "https://www.figma.com/proto/WejnLeJP4JJoKXc2SDewt0/EssentialsMonitor?node-id=5-1588&starting-point-node-id=5%3A1588&t=UyZi56v0XXSrOUcn-1";
