@@ -2,10 +2,10 @@ const CACHE_NAME = 'site-cache-v1';
 const OFFLINE_URLS = [
   '/',
   '/index.html',
-  '/assets/images/mobile.png',
-  '/assets/css/styles.css',
-  '/assets/js/script.js',
-  '/offline.html',
+  'assets/images/mobile.png',
+  'assets/css/styles.css',
+  'assets/js/script.js',
+  'offline.html',
 ];
 
 // Install the service worker and cache assets
@@ -22,7 +22,7 @@ self.addEventListener('install', event => {
 self.addEventListener('fetch', event => {
   event.respondWith(
     caches.match(event.request).then(response => {
-      return response || fetch(event.request).catch(() => caches.match('/offline.html'));
+      return response || fetch(event.request).catch(() => caches.match('offline.html'));
     })
   );
 });
