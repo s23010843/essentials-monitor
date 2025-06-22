@@ -2,6 +2,31 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <!-- Permissions -->
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <!-- Storage permissions for compatibility with devices running Android 12 (API level 32) and below -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <!-- Hardware features -->
+    <uses-feature
+        android:name="android.hardware.location"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.location.gps"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.sensor.accelerometer"
+        android:required="false" />
+    <uses-feature
+        android:name="android.hardware.camera"
+        android:required="false" />
+
     <application
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
@@ -13,35 +38,101 @@
         android:theme="@style/Theme.EssentialsMonitor"
         tools:targetApi="31">
 
-        <activity
-            android:name=".ui.notifications.NotificationsActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".ui.auth.signup.SignupActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".ui.auth.login.LoginActivity"
-            android:exported="false" />
-
+        <!-- Google Maps API Key -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/GOOGLE_MAP_API_KEY" />
 
+        <!-- Splash Activity (Launcher) -->
         <activity
-            android:name=".MapsActivity"
-            android:exported="false"
-            android:label="@string/title_activity_maps"/>
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.EssentialsMonitor"/>
 
+        <!-- Main Activity -->
         <activity
             android:name=".MainActivity"
-            android:exported="true">
+            android:exported="false"
+            />
+
+        <!-- Authentication Activities -->
+        <activity
+            android:name=".LoginActivity"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".SignupActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Product Activities -->
+        <activity
+            android:name=".ProductSearchActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".ProductDetailActivity"
+            android:exported="false"
+            android:parentActivityName=".ProductSearchActivity" />
+
+        <activity
+            android:name=".CategoryActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".FavoritesActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".PriceHistoryActivity"
+            android:exported="false"
+            android:parentActivityName=".ProductDetailActivity" />
+
+        <!-- Price and Store Activities -->
+        <activity
+            android:name=".ReportPriceActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            android:parentActivityName=".ProductDetailActivity" />
+
+        <activity
+            android:name=".StoreListActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Map Activity -->
+        <activity
+            android:name=".MapViewActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <!-- Profile Activities -->
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false"
+            android:parentActivityName=".MainActivity" />
+
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize"
+            android:parentActivityName=".ProfileActivity" />
+
+        <!-- Settings Activity -->
+        <activity
+            android:name=".NotificationSettingsActivity"
+            android:exported="false"
+            android:parentActivityName=".ProfileActivity" />
+
     </application>
 
 </manifest>

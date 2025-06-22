@@ -19,6 +19,30 @@
 - **Firebase Cloud Messaging (FCM)**
 - **Google Maps API**
 
+```bash
+/essentials-monitor                # Root project directory
+├── /app/                          # Main Android app module
+│   ├── /build/                    # Build outputs (auto-generated)
+│   ├── /release/                  # Optional: release-related assets (e.g., signing configs)
+│   └── /src/                      # Source code and resources
+│       ├── /main/                 # Main source set
+│       │   ├── /java/             # Java/Kotlin source files
+│       │   ├── /res/              # Resources (layouts, drawables, strings, etc.)
+│       │   └── AndroidManifest.xml  # App manifest
+│       ├── /test/                 # Unit tests
+│       └── /androidTest/          # Instrumentation tests
+├── /.gradle/                      # Gradle's cache directory
+├── /.idea/                        # IDE settings (for IntelliJ/Android Studio)
+├── .gitignore                     # Git ignored files list
+├── build.gradle.kts              # Project-level Gradle config (Kotlin DSL)
+├── settings.gradle.kts           # Settings file to include modules
+├── gradle.properties             # Project-wide Gradle properties
+├── gradlew                       # Unix shell script for Gradle wrapper
+├── gradlew.bat                   # Windows batch script for Gradle wrapper
+├── local.properties              # Local SDK path (not committed)
+├── LICENSE                       # License file
+└── README.md                     # Project documentation
+```
 ## Setup Instructions
 1. Clone the repo:
    ```bash
