@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
-    
+
     // Database Info
     private static final String DATABASE_NAME = "EssentialsMonitor.db";
     private static final int DATABASE_VERSION = 1;
@@ -245,7 +245,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
             user.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
             user.setName(cursor.getString(cursor.getColumnIndex(KEY_NAME)));
             user.setEmail(cursor.getString(cursor.getColumnIndex(KEY_EMAIL)));
-            user.setPhoneNumber(cursor.getString(cursor.getColumnIndex(KEY_PHONE_NUMBER)));
+            int phoneIndex = cursor.getColumnIndex(KEY_PHONE_NUMBER);
+            if (phoneIndex != -1) {
+                user.setPhoneNumber(cursor.getString(phoneIndex));
+            } else {
+                user.setPhoneNumber(null);  // Safe fallback
+            }
         }
 
         cursor.close();
@@ -255,8 +260,8 @@ public class DatabaseHelper extends SQLiteOpenHelper {
     public int getUserReportCount(int userId) {
         SQLiteDatabase db = this.getReadableDatabase();
 
-        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_PRICE_REPORTS +
-                " WHERE " + KEY_USER_ID + "=?", new String[]{String.valueOf(userId)});
+        Cursor cursor = db.rawQuery("SELECT COUNT(*) FROM " + TABLE_PRICE_REPORTS
+                + " WHERE " + KEY_USER_ID + "=?", new String[]{String.valueOf(userId)});
 
         int count = 0;
         if (cursor.moveToFirst()) {
@@ -266,6 +271,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         cursor.close();
         return count;
     }
+
     public long addPriceReport(String productName, double price, String storeName, String category) {
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues values = new ContentValues();
@@ -274,7 +280,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         values.put(KEY_STORE_NAME, storeName);
         values.put(KEY_CATEGORY, category);
         values.put(KEY_CREATED_AT, System.currentTimeMillis());
-        
+
         long id = db.insert(TABLE_PRICE_REPORTS, null, values);
         db.close();
         return id;
@@ -285,22 +291,54 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         return String.valueOf(password.hashCode());
     }
 
+    public boolean updateUser(int userId, String newName, String newEmail) {
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues values = new ContentValues();
+        values.put(KEY_NAME, newName);
+        values.put(KEY_EMAIL, newEmail);
+
+        int rowsAffected = db.update(TABLE_USERS, values, KEY_ID + "=?", new String[]{String.valueOf(userId)});
+        return rowsAffected > 0;
+    }
+
+
     // User class
     public static class User {
+
         private int id;
-        private String name, email,phoneNumber;
-        
-        public int getId() { return id; }
-        public void setId(int id) { this.id = id; }
+        private String name, email, phoneNumber;
 
-        public String getName() { return name; }
-        public void setName(String name) { this.name = name; }
+        public int getId() {
+            return id;
+        }
 
-        public String getEmail() { return email; }
-        public void setEmail(String email) { this.email = email; }
+        public void setId(int id) {
+            this.id = id;
+        }
 
-        public String getPhoneNumber() { return phoneNumber; }
-        public void setPhoneNumber(String phoneNumber) { this.phoneNumber = phoneNumber; }
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getEmail() {
+            return email;
+        }
+
+        public void setEmail(String email) {
+            this.email = email;
+        }
+
+        public String getPhoneNumber() {
+            return phoneNumber;
+        }
+
+        public void setPhoneNumber(String phoneNumber) {
+            this.phoneNumber = phoneNumber;
+        }
     }
 
     // Product methods
@@ -482,68 +520,202 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Data model classes
     public static class Product {
+
         private int id;
         private String name, category, brand, description, barcode;
 
         // Getters and setters
-        public int getId() { return id; }
-        public void setId(int id) { this.id = id; }
-        public String getName() { return name; }
-        public void setName(String name) { this.name = name; }
-        public String getCategory() { return category; }
-        public void setCategory(String category) { this.category = category; }
-        public String getBrand() { return brand; }
-        public void setBrand(String brand) { this.brand = brand; }
-        public String getDescription() { return description; }
-        public void setDescription(String description) { this.description = description; }
-        public String getBarcode() { return barcode; }
-        public void setBarcode(String barcode) { this.barcode = barcode; }
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getCategory() {
+            return category;
+        }
+
+        public void setCategory(String category) {
+            this.category = category;
+        }
+
+        public String getBrand() {
+            return brand;
+        }
+
+        public void setBrand(String brand) {
+            this.brand = brand;
+        }
+
+        public String getDescription() {
+            return description;
+        }
+
+        public void setDescription(String description) {
+            this.description = description;
+        }
+
+        public String getBarcode() {
+            return barcode;
+        }
+
+        public void setBarcode(String barcode) {
+            this.barcode = barcode;
+        }
     }
+
     public static class Store {
+
         private int id;
         private String name, address, phone, hours;
         private double latitude, longitude, distance;
 
         // Getters and setters
-        public int getId() { return id; }
-        public void setId(int id) { this.id = id; }
-        public String getName() { return name; }
-        public void setName(String name) { this.name = name; }
-        public String getAddress() { return address; }
-        public void setAddress(String address) { this.address = address; }
-        public String getPhone() { return phone; }
-        public void setPhone(String phone) { this.phone = phone; }
-        public String getHours() { return hours; }
-        public void setHours(String hours) { this.hours = hours; }
-        public double getLatitude() { return latitude; }
-        public void setLatitude(double latitude) { this.latitude = latitude; }
-        public double getLongitude() { return longitude; }
-        public void setLongitude(double longitude) { this.longitude = longitude; }
-        public double getDistance() { return distance; }
-        public void setDistance(double distance) { this.distance = distance; }
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
+        }
+
+        public String getAddress() {
+            return address;
+        }
+
+        public void setAddress(String address) {
+            this.address = address;
+        }
+
+        public String getPhone() {
+            return phone;
+        }
+
+        public void setPhone(String phone) {
+            this.phone = phone;
+        }
+
+        public String getHours() {
+            return hours;
+        }
+
+        public void setHours(String hours) {
+            this.hours = hours;
+        }
+
+        public double getLatitude() {
+            return latitude;
+        }
+
+        public void setLatitude(double latitude) {
+            this.latitude = latitude;
+        }
+
+        public double getLongitude() {
+            return longitude;
+        }
+
+        public void setLongitude(double longitude) {
+            this.longitude = longitude;
+        }
+
+        public double getDistance() {
+            return distance;
+        }
+
+        public void setDistance(double distance) {
+            this.distance = distance;
+        }
     }
+
     public static class PriceReport {
+
         private int id, productId, storeId, userId;
         private double price;
         private boolean verified, available;
         private String createdAt;
 
         // Getters and setters
-        public int getId() { return id; }
-        public void setId(int id) { this.id = id; }
-        public int getProductId() { return productId; }
-        public void setProductId(int productId) { this.productId = productId; }
-        public int getStoreId() { return storeId; }
-        public void setStoreId(int storeId) { this.storeId = storeId; }
-        public int getUserId() { return userId; }
-        public void setUserId(int userId) { this.userId = userId; }
-        public double getPrice() { return price; }
-        public void setPrice(double price) { this.price = price; }
-        public boolean isVerified() { return verified; }
-        public void setVerified(boolean verified) { this.verified = verified; }
-        public boolean isAvailable() { return available; }
-        public void setAvailable(boolean available) { this.available = available; }
-        public String getCreatedAt() { return createdAt; }
-        public void setCreatedAt(String createdAt) { this.createdAt = createdAt; }
+        public int getId() {
+            return id;
+        }
+
+        public void setId(int id) {
+            this.id = id;
+        }
+
+        public int getProductId() {
+            return productId;
+        }
+
+        public void setProductId(int productId) {
+            this.productId = productId;
+        }
+
+        public int getStoreId() {
+            return storeId;
+        }
+
+        public void setStoreId(int storeId) {
+            this.storeId = storeId;
+        }
+
+        public int getUserId() {
+            return userId;
+        }
+
+        public void setUserId(int userId) {
+            this.userId = userId;
+        }
+
+        public double getPrice() {
+            return price;
+        }
+
+        public void setPrice(double price) {
+            this.price = price;
+        }
+
+        public boolean isVerified() {
+            return verified;
+        }
+
+        public void setVerified(boolean verified) {
+            this.verified = verified;
+        }
+
+        public boolean isAvailable() {
+            return available;
+        }
+
+        public void setAvailable(boolean available) {
+            this.available = available;
+        }
+
+        public String getCreatedAt() {
+            return createdAt;
+        }
+
+        public void setCreatedAt(String createdAt) {
+            this.createdAt = createdAt;
+        }
     }
 }

@@ -3,10 +3,12 @@ package com.s23010843.essentialsmonitor;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class LoginActivity extends AppCompatActivity {
@@ -25,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
         Button loginButton = findViewById(R.id.login_button);
         Button signupButton = findViewById(R.id.signup_button);
 
+        // Login button
         loginButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -32,6 +35,7 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
+        // Signup button
         signupButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -44,15 +48,22 @@ public class LoginActivity extends AppCompatActivity {
         String email = emailEditText.getText().toString().trim();
         String password = passwordEditText.getText().toString().trim();
 
+        // Validate input
         if (email.isEmpty() || password.isEmpty()) {
             Toast.makeText(this, "Please fill all fields", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        // Verify credentials with database
+        // Email format validation
+        if (!Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            Toast.makeText(this, "Please enter a valid email address", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        // Verify credentials
         boolean isValidUser = databaseHelper.checkUser(email, password);
         if (isValidUser) {
-            // Save login state
+            // Save login state and user email
             SharedPreferences prefs = getSharedPreferences("user_prefs", MODE_PRIVATE);
             SharedPreferences.Editor editor = prefs.edit();
             editor.putBoolean("is_logged_in", true);
@@ -60,6 +71,8 @@ public class LoginActivity extends AppCompatActivity {
             editor.apply();
 
             Toast.makeText(this, "Login successful", Toast.LENGTH_SHORT).show();
+
+            // Go to Splash or Main/Profile screen
             Intent intent = new Intent(LoginActivity.this, SplashActivity.class);
             startActivity(intent);
             finish();

@@ -46,8 +46,7 @@
         <!-- Splash Activity (Launcher) -->
         <activity
             android:name=".SplashActivity"
-            android:exported="true"
-            android:theme="@style/Theme.EssentialsMonitor"/>
+            android:exported="false" />
 
         <!-- Main Activity -->
         <activity

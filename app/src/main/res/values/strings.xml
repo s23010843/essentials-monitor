@@ -42,7 +42,7 @@
     <string name="settings">Settings</string>
 
     <!-- Map -->
-    <string name="GOOGLE_MAP_API_KEY">YAIzaSyAARbWU1iWdlGUWaCzunREgC1chQgIdVPY</string>
+    <string name="GOOGLE_MAP_API_KEY">AIzaSyAARbWU1iWdlGUWaCzunREgC1chQgIdVPY</string>
     <string name="title_activity_maps">Find Location</string>
     <string name="search_location">Search location...</string>
     <string name="search">Search</string>

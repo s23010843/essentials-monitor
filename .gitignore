@@ -67,3 +67,6 @@ screenshots/
 *.json
 api.xml
 contact.html
+
+.cache_ggshield
+*.cache_ggshield
