@@ -1,0 +1,18 @@
+[
+    {
+        "src": "./screenshots/signup/wireframe-signup.png",
+        "alt": "Wireframe Signup Screen"
+    },
+    {
+        "src": "./screenshots/home_welcome/emulator-home.png",
+        "alt": "Emulator Home Screen"
+    },
+    {
+        "src": "./screenshots/dashboard/wireframe-dashboard.png",
+        "alt": "Wireframe Dashboard Screen"
+    },
+    {
+        "src": "./screenshots/maps/wireframe-maps.png",
+        "alt": "Wireframe Maps Screen"
+    }
+]

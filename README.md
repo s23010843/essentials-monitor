@@ -43,6 +43,28 @@
 ├── LICENSE                       # License file
 └── README.md                     # Project documentation
 ```
+
+## UI Designs
+<div style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: space-between;">
+  <img src="screenshots/signup/wireframe-signup.png" alt="Wireframe Signup Screen" style="width: 32%; max-width: 100%;" />
+  <img src="screenshots/home_welcome/emulator-home.png" alt="Emulator Home Screen" style="width: 32%; max-width: 100%;" />
+  <img src="screenshots/dashboard/wireframe-dashboard.png" alt="Wireframe Dashboard Screen" style="width: 32%; max-width: 100%;" />
+  <img src="screenshots/maps/wireframe-maps.png" alt="Wireframe Maps Screen" style="width: 32%; max-width: 100%;" />
+</div>
+
+<style>
+  @media (max-width: 768px) {
+    div {
+      flex-direction: column;
+      justify-content: center;
+    }
+    div img {
+      width: 100% !important;
+      margin-bottom: 10px;
+    }
+  }
+</style>
+
 ## Setup Instructions
 1. Clone the repo:
    ```bash

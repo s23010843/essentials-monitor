@@ -1,5 +1,4 @@
 # Built application files
-*.apk
 *.ap_  
 *.aab
 output-metadata.json
@@ -63,10 +62,13 @@ render.experimental.xml
 *.pid
 
 # Temporary disable files
-screenshots/
-*.json
+# screenshots/
+# *.json
 api.xml
 contact.html
 
 .cache_ggshield
 *.cache_ggshield
+
+#  Android Package files
+# *.apk
