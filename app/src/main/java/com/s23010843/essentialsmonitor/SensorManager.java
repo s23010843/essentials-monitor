@@ -173,8 +173,10 @@ public class SensorManager implements LocationListener, SensorEventListener {
     }
 
     @Override
+    @SuppressWarnings("deprecation")
     public void onStatusChanged(String provider, int status, Bundle extras) {
         // Handle provider status changes if needed
+        // This method is deprecated in API level 29+ but required for compatibility
     }
 
     @Override

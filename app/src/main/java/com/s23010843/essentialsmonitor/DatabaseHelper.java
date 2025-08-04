@@ -13,7 +13,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     // Database Info
     private static final String DATABASE_NAME = "EssentialsMonitor.db";
-    private static final int DATABASE_VERSION = 1;
+    private static final int DATABASE_VERSION = 2;
 
     // Table Names
     private static final String TABLE_PRODUCTS = "products";
@@ -121,6 +121,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 + KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT,"
                 + KEY_EMAIL + " TEXT NOT NULL UNIQUE,"
                 + KEY_NAME + " TEXT NOT NULL,"
+                + KEY_PHONE_NUMBER + " TEXT,"
                 + KEY_PASSWORD_HASH + " TEXT NOT NULL,"
                 + KEY_LOCATION_ENABLED + " INTEGER DEFAULT 1,"
                 + KEY_CREATED_AT + " DATETIME DEFAULT CURRENT_TIMESTAMP,"
@@ -242,9 +243,9 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         User user = null;
         if (cursor.moveToFirst()) {
             user = new User();
-            user.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
-            user.setName(cursor.getString(cursor.getColumnIndex(KEY_NAME)));
-            user.setEmail(cursor.getString(cursor.getColumnIndex(KEY_EMAIL)));
+            user.setId(cursor.getInt(cursor.getColumnIndexOrThrow(KEY_ID)));
+            user.setName(cursor.getString(cursor.getColumnIndexOrThrow(KEY_NAME)));
+            user.setEmail(cursor.getString(cursor.getColumnIndexOrThrow(KEY_EMAIL)));
             int phoneIndex = cursor.getColumnIndex(KEY_PHONE_NUMBER);
             if (phoneIndex != -1) {
                 user.setPhoneNumber(cursor.getString(phoneIndex));
@@ -366,12 +367,12 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Product product = new Product();
-                product.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
-                product.setName(cursor.getString(cursor.getColumnIndex(KEY_PRODUCT_NAME)));
-                product.setCategory(cursor.getString(cursor.getColumnIndex(KEY_CATEGORY)));
-                product.setBrand(cursor.getString(cursor.getColumnIndex(KEY_BRAND)));
-                product.setDescription(cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)));
-                product.setBarcode(cursor.getString(cursor.getColumnIndex(KEY_BARCODE)));
+                product.setId(cursor.getInt(cursor.getColumnIndexOrThrow(KEY_ID)));
+                product.setName(cursor.getString(cursor.getColumnIndexOrThrow(KEY_PRODUCT_NAME)));
+                product.setCategory(cursor.getString(cursor.getColumnIndexOrThrow(KEY_CATEGORY)));
+                product.setBrand(cursor.getString(cursor.getColumnIndexOrThrow(KEY_BRAND)));
+                product.setDescription(cursor.getString(cursor.getColumnIndexOrThrow(KEY_DESCRIPTION)));
+                product.setBarcode(cursor.getString(cursor.getColumnIndexOrThrow(KEY_BARCODE)));
                 products.add(product);
             } while (cursor.moveToNext());
         }
@@ -393,11 +394,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 Product product = new Product();
-                product.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
-                product.setName(cursor.getString(cursor.getColumnIndex(KEY_PRODUCT_NAME)));
-                product.setCategory(cursor.getString(cursor.getColumnIndex(KEY_CATEGORY)));
-                product.setBrand(cursor.getString(cursor.getColumnIndex(KEY_BRAND)));
-                product.setDescription(cursor.getString(cursor.getColumnIndex(KEY_DESCRIPTION)));
+                product.setId(cursor.getInt(cursor.getColumnIndexOrThrow(KEY_ID)));
+                product.setName(cursor.getString(cursor.getColumnIndexOrThrow(KEY_PRODUCT_NAME)));
+                product.setCategory(cursor.getString(cursor.getColumnIndexOrThrow(KEY_CATEGORY)));
+                product.setBrand(cursor.getString(cursor.getColumnIndexOrThrow(KEY_BRAND)));
+                product.setDescription(cursor.getString(cursor.getColumnIndexOrThrow(KEY_DESCRIPTION)));
                 products.add(product);
             } while (cursor.moveToNext());
         }
@@ -431,21 +432,21 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
         if (cursor.moveToFirst()) {
             do {
-                double storeLat = cursor.getDouble(cursor.getColumnIndex(KEY_LATITUDE));
-                double storeLng = cursor.getDouble(cursor.getColumnIndex(KEY_LONGITUDE));
+                double storeLat = cursor.getDouble(cursor.getColumnIndexOrThrow(KEY_LATITUDE));
+                double storeLng = cursor.getDouble(cursor.getColumnIndexOrThrow(KEY_LONGITUDE));
 
                 // Calculate distance
                 double distance = calculateDistance(userLat, userLng, storeLat, storeLng);
 
                 if (distance <= radiusKm) {
                     Store store = new Store();
-                    store.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
-                    store.setName(cursor.getString(cursor.getColumnIndex(KEY_STORE_NAME)));
-                    store.setAddress(cursor.getString(cursor.getColumnIndex(KEY_ADDRESS)));
+                    store.setId(cursor.getInt(cursor.getColumnIndexOrThrow(KEY_ID)));
+                    store.setName(cursor.getString(cursor.getColumnIndexOrThrow(KEY_STORE_NAME)));
+                    store.setAddress(cursor.getString(cursor.getColumnIndexOrThrow(KEY_ADDRESS)));
                     store.setLatitude(storeLat);
                     store.setLongitude(storeLng);
-                    store.setPhone(cursor.getString(cursor.getColumnIndex(KEY_PHONE)));
-                    store.setHours(cursor.getString(cursor.getColumnIndex(KEY_HOURS)));
+                    store.setPhone(cursor.getString(cursor.getColumnIndexOrThrow(KEY_PHONE)));
+                    store.setHours(cursor.getString(cursor.getColumnIndexOrThrow(KEY_HOURS)));
                     store.setDistance(distance);
                     stores.add(store);
                 }
@@ -486,14 +487,14 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         if (cursor.moveToFirst()) {
             do {
                 PriceReport report = new PriceReport();
-                report.setId(cursor.getInt(cursor.getColumnIndex(KEY_ID)));
-                report.setProductId(cursor.getInt(cursor.getColumnIndex(KEY_PRODUCT_ID)));
-                report.setStoreId(cursor.getInt(cursor.getColumnIndex(KEY_STORE_ID)));
-                report.setUserId(cursor.getInt(cursor.getColumnIndex(KEY_USER_ID)));
-                report.setPrice(cursor.getDouble(cursor.getColumnIndex(KEY_PRICE)));
-                report.setVerified(cursor.getInt(cursor.getColumnIndex(KEY_VERIFIED)) == 1);
-                report.setAvailable(cursor.getInt(cursor.getColumnIndex(KEY_AVAILABILITY)) == 1);
-                report.setCreatedAt(cursor.getString(cursor.getColumnIndex(KEY_CREATED_AT)));
+                report.setId(cursor.getInt(cursor.getColumnIndexOrThrow(KEY_ID)));
+                report.setProductId(cursor.getInt(cursor.getColumnIndexOrThrow(KEY_PRODUCT_ID)));
+                report.setStoreId(cursor.getInt(cursor.getColumnIndexOrThrow(KEY_STORE_ID)));
+                report.setUserId(cursor.getInt(cursor.getColumnIndexOrThrow(KEY_USER_ID)));
+                report.setPrice(cursor.getDouble(cursor.getColumnIndexOrThrow(KEY_PRICE)));
+                report.setVerified(cursor.getInt(cursor.getColumnIndexOrThrow(KEY_VERIFIED)) == 1);
+                report.setAvailable(cursor.getInt(cursor.getColumnIndexOrThrow(KEY_AVAILABILITY)) == 1);
+                report.setCreatedAt(cursor.getString(cursor.getColumnIndexOrThrow(KEY_CREATED_AT)));
                 reports.add(report);
             } while (cursor.moveToNext());
         }

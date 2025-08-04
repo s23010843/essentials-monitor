@@ -5,19 +5,66 @@
 ## Overview
 **EssentialsMonitor** is an Android app that helps users track real-time prices and availability of essential goods—such as food, gas, and medicine—especially during times of economic crisis. It delivers location-based pricing, crowd-sourced reports, and timely alerts to help users make informed decisions.
 
-## Features
+## 🚀 Features
 - Real-time price updates
 - Nearby store search using location
 - User-submitted price reports
 - Notifications for price changes and alerts
-- Simple Android UI built with Java
+- User authentication and profiles
+- Favorites system
+- Interactive maps integration
+- Sensor-based features
 
-## Tech Stack
-- **Android (Java)**
-- **SQLite** (local caching)
-- **Firebase Realtime Database**
-- **Firebase Cloud Messaging (FCM)**
-- **Google Maps API**
+## 🛠 Tech Stack
+- **Android (Java)** - Native Android development
+- **SQLite** - Local database for caching and offline functionality
+- **Google Maps API** - Location services and store mapping
+- **Google Play Services** - Location and maps integration
+- **Material Design** - Modern UI/UX components
+
+## 📱 App Flow
+1. **Splash Screen** → Checks login status
+2. **Authentication** → Login/Signup with validation
+3. **Dashboard** → Main navigation hub
+4. **Features** → Search, Maps, Reports, Profile
+
+## 🔧 Setup Instructions
+
+### Prerequisites
+- Android Studio Hedgehog or later
+- Android SDK 24+ (Android 7.0+)
+- Google Maps API Key
+
+### Installation
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/s23010843/essentials-monitor.git
+   cd essentials-monitor
+   ```
+
+2. **Configure Google Maps API**
+   - Copy `local.properties.example` to `local.properties`
+   - Add your Google Maps API key:
+     ```
+     GOOGLE_MAPS_API_KEY=YOUR_API_KEY_HERE
+     ```
+   - Or update `app/src/main/res/values/api.xml` with your key
+
+3. **Build and Run**
+   ```bash
+   ./gradlew assembleDebug
+   ```
+
+### Recent Bug Fixes (v1.0.3)
+- Fixed duplicate resource error (`GOOGLE_MAP_API_KEY`)
+- Corrected app launch flow (Splash → Login → Main)
+- Fixed database schema with proper User table
+- Improved authentication flow and session management
+- Updated dependencies and removed duplicates
+- Added network security configuration
+- Enhanced error handling and user experience
+
+## 📂 Project Structure
 
 ```bash
 /essentials-monitor                # Root project directory
