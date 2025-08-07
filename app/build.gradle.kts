@@ -10,8 +10,8 @@ android {
         applicationId = "com.s23010843.essentialsmonitor"
         minSdk = 24
         targetSdk = 35
-        versionCode = 3
-        versionName = "1.0.3"
+        versionCode = 5
+        versionName = "1.0.5"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -37,8 +37,24 @@ dependencies {
     implementation(libs.material)
     implementation(libs.activity)
     implementation(libs.constraintlayout)
+    
+    // Google Maps and Location Services
     implementation(libs.gms.play.services.maps)
     implementation(libs.gms.play.services.location)
+    
+    // Google Sign-In
+    implementation(libs.gms.play.services.auth)
+    
+    // RecyclerView
+    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    
+    // CardView
+    implementation("androidx.cardview:cardview:1.0.0")
+    
+    // SwipeRefreshLayout
+    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation(libs.recyclerview)
+
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)

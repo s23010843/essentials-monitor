@@ -1,13 +1,9 @@
 <resources>
     <!-- App Info -->
-    <string name="app_name">EssentialsMonitor</string>
-    <string name="app_version">v1.0.3</string>
+    <string name="app_name">Essentials Monitor</string>
+    <string name="app_version">v1.0.5</string>
     <string name="app_rating">4.8/5</string>
-    <string name="app_description">During economic crises, prices of essential items like food, gas,
-        and medicine can fluctuate rapidly, making it hard for people to find accurate prices or
-        locate where to buy them. This app helps users track real-time prices and availability of
-        essential goods in their area, ensuring they make informed purchasing decisions and avoid
-        overpaying.</string>
+    <string name="app_description">Stay informed about prices and availability of essential items in your area. Track real-time prices, find the best deals, and make smart purchasing decisions with ease.</string>
     <string name="app_logo">App Logo</string>
 
     <string name="activate_users">150K+</string>
@@ -70,7 +66,6 @@
     <string name="sample_email_account">user@example.com</string>
     <string name="user_name">User Name</string>
     <string name="change_photo">Change Photo</string>
-    <string name="phone_number">Phone Number</string>
     <string name="save_changes">Save Changes</string>
 
     <!-- Store -->
@@ -84,4 +79,22 @@
     <string name="additional_notes_optional">Additional Notes (Optional)</string>
     <string name="submit_report">Submit Report</string>
     <string name="cancel">Cancel</string>
+    
+    <!-- Additional missing strings -->
+    <string name="no_account">Don\'t have an account? Sign up</string>
+    <string name="have_account">Already have an account? Sign in</string>
+    <string name="GOOGLE_MAP_API_KEY">AIzaSyAARbWU1iWdlGUWaCzunREgC1chQgIdVPY</string>
+
+    <!-- Bottom Navigation Tabs-->
+    <string name="home">Home</string>
+    <string name="sensor">Sensor</string>
+    <string name="store_location">Store Location</string>
+
+    <!-- Images -->
+    <string name="products">Products</string>
+    <string name="welcome_description">Track prices, explore locations, and manage your essential products with ease</string>
+    <string name="locations">Locations</string>
+    <string name="price_reports">Price Reports</string>
+    <string name="add_product">Add Product</string>
+
 </resources>

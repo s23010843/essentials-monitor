@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Dark Theme Colors -->
+    <color name="primary">#3F51B5</color>
+    <color name="primary_dark">#303F9F</color>
+    <color name="primary_light">#7986CB</color>
+    
+    <color name="secondary">#4CAF50</color>
+    <color name="secondary_dark">#388E3C</color>
+    <color name="secondary_light">#81C784</color>
+    
+    <color name="accent">#FF6F00</color>
+    <color name="accent_dark">#E65100</color>
+    <color name="accent_light">#FFB74D</color>
+    
+    <!-- Dark Background Colors -->
+    <color name="background">#121212</color>
+    <color name="background_color">#121212</color>
+    <color name="background_light">#1E1E1E</color>
+    <color name="background_gradient_start">#1A237E</color>
+    <color name="background_gradient_end">#4A148C</color>
+    <color name="surface">#1E1E1E</color>
+    <color name="card_background">#2D2D2D</color>
+    
+    <!-- Dark Text Colors -->
+    <color name="text_primary">#FFFFFF</color>
+    <color name="text_secondary">#B3B3B3</color>
+    <color name="text_hint">#666666</color>
+    <color name="text_white">#FFFFFF</color>
+    <color name="text_accent">#FF6F00</color>
+    
+    <!-- Dark Card Colors -->
+    <color name="card_blue">#1A237E</color>
+    <color name="card_green">#1B5E20</color>
+    <color name="card_orange">#E65100</color>
+    <color name="card_purple">#4A148C</color>
+    <color name="card_pink">#880E4F</color>
+    <color name="card_red">#B71C1C</color>
+    <color name="card_teal">#004D40</color>
+</resources>

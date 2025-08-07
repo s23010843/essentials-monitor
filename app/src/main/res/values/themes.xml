@@ -1,9 +1,146 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
-    <style name="Base.Theme.EssentialsMonitor" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    <!-- Base application theme -->
+    <style name="Base.Theme.EssentialsMonitor" parent="Theme.Material3.DayNight">
+        <!-- Customize your light theme here -->
+        <item name="colorPrimary">@color/primary</item>
+        <item name="colorPrimaryVariant">@color/primary_dark</item>
+        <item name="colorOnPrimary">@color/text_white</item>
+        
+        <item name="colorSecondary">@color/secondary</item>
+        <item name="colorSecondaryVariant">@color/secondary_dark</item>
+        <item name="colorOnSecondary">@color/text_white</item>
+        
+        <item name="android:colorAccent">@color/accent</item>
+        <item name="colorSurface">@color/surface</item>
+        <item name="colorOnSurface">@color/text_primary</item>
+        <item name="android:colorBackground">@color/background</item>
+        <item name="colorOnBackground">@color/text_primary</item>
+        
+        <!-- Status bar -->
+        <item name="android:statusBarColor">@color/primary_dark</item>
+        <item name="android:windowLightStatusBar">false</item>
+        
+        <!-- Navigation bar -->
+        <item name="android:navigationBarColor">@color/surface</item>
+        <item name="android:windowLightNavigationBar">true</item>
     </style>
 
     <style name="Theme.EssentialsMonitor" parent="Base.Theme.EssentialsMonitor" />
+    
+    <!-- Enhanced Button Styles -->
+    <style name="PrimaryButton" parent="Widget.Material3.Button">
+        <item name="android:background">@drawable/btn_primary_gradient</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="cornerRadius">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">18dp</item>
+        <item name="android:elevation">6dp</item>
+        <item name="android:stateListAnimator">@null</item>
+    </style>
+    
+    <style name="SecondaryButton" parent="Widget.Material3.Button">
+        <item name="android:background">@drawable/btn_secondary_gradient</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="cornerRadius">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">18dp</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+    
+    <style name="AccentButton" parent="Widget.Material3.Button">
+        <item name="android:background">@drawable/btn_accent_gradient</item>
+        <item name="android:textColor">@color/text_white</item>
+        <item name="cornerRadius">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">18dp</item>
+        <item name="android:elevation">4dp</item>
+    </style>
+    
+    <style name="OutlinedButton" parent="Widget.Material3.Button.OutlinedButton">
+        <item name="strokeColor">@color/primary</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="cornerRadius">16dp</item>
+        <item name="android:textSize">16sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:padding">18dp</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+    
+    <!-- Enhanced Card Styles -->
+    <style name="CustomCard" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/card_background</item>
+        <item name="cardCornerRadius">20dp</item>
+        <item name="cardElevation">8dp</item>
+        <item name="android:layout_margin">12dp</item>
+        <item name="strokeColor">@color/primary_light</item>
+        <item name="strokeWidth">1dp</item>
+    </style>
+    
+    <style name="FeatureCard" parent="Widget.Material3.CardView.Elevated">
+        <item name="cardBackgroundColor">@color/surface</item>
+        <item name="cardCornerRadius">24dp</item>
+        <item name="cardElevation">12dp</item>
+        <item name="android:layout_margin">16dp</item>
+        <item name="strokeColor">@color/accent_light</item>
+        <item name="strokeWidth">2dp</item>
+    </style>
+    
+    <!-- Enhanced EditText Styles -->
+    <style name="CustomEditText" parent="Widget.Material3.TextInputLayout.OutlinedBox">
+        <item name="boxCornerRadiusTopStart">16dp</item>
+        <item name="boxCornerRadiusTopEnd">16dp</item>
+        <item name="boxCornerRadiusBottomStart">16dp</item>
+        <item name="boxCornerRadiusBottomEnd">16dp</item>
+        <item name="boxStrokeColor">@color/primary</item>
+        <item name="hintTextColor">@color/text_hint</item>
+        <item name="android:textColorHint">@color/text_hint</item>
+        <item name="boxStrokeWidth">2dp</item>
+        <item name="boxStrokeWidthFocused">3dp</item>
+    </style>
+    
+    <!-- Header Text Styles -->
+    <style name="HeaderText">
+        <item name="android:textSize">32sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/text_primary</item>
+        <item name="android:layout_marginBottom">24dp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    
+    <style name="SubHeaderText">
+        <item name="android:textSize">20sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/primary</item>
+        <item name="android:layout_marginBottom">16dp</item>
+        <item name="android:fontFamily">sans-serif-medium</item>
+    </style>
+    
+    <style name="BodyText">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/text_secondary</item>
+        <item name="android:lineSpacingExtra">4dp</item>
+        <item name="android:fontFamily">sans-serif</item>
+    </style>
+    
+    <!-- Bottom Navigation Text Styles -->
+    <style name="BottomNavigationTextActive" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">12sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:textColor">@color/primary</item>
+    </style>
+    
+    <style name="BottomNavigationTextInactive" parent="@style/TextAppearance.AppCompat.Caption">
+        <item name="android:textSize">11sp</item>
+        <item name="android:textColor">@color/text_hint</item>
+    </style>
+    
+    <!-- Ripple Effects -->
+    <style name="RippleButton" parent="Widget.Material3.Button">
+        <item name="android:background">?android:attr/selectableItemBackground</item>
+        <item name="android:foreground">?android:attr/selectableItemBackground</item>
+    </style>
+
 </resources>
