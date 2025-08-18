@@ -5,14 +5,14 @@ plugins {
 
 android {
     namespace = "com.s23010843.essentialsmonitor"
-    compileSdk = 35
+    compileSdk = 36
 
     defaultConfig {
         applicationId = "com.s23010843.essentialsmonitor"
         minSdk = 24
         targetSdk = 35
-        versionCode = 6
-        versionName = "1.0.6"
+        versionCode = 7
+        versionName = "1.0.7"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -50,13 +50,13 @@ dependencies {
     implementation(libs.gms.play.services.auth)
     
     // RecyclerView
-    implementation("androidx.recyclerview:recyclerview:1.3.2")
+    implementation(libs.recyclerview.v132)
     
     // CardView
-    implementation("androidx.cardview:cardview:1.0.0")
+    implementation(libs.cardview)
     
     // SwipeRefreshLayout
-    implementation("androidx.swiperefreshlayout:swiperefreshlayout:1.1.0")
+    implementation(libs.swiperefreshlayout)
     implementation(libs.recyclerview)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)

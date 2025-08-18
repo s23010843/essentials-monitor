@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONObject;
@@ -36,7 +37,7 @@ public class AddProductActivity extends AppCompatActivity {
             String location = inputLocation.getText().toString().trim();
 
             if (name.isEmpty() || priceStr.isEmpty()) {
-                Toast.makeText(this, "Name and price are required", Toast.LENGTH_SHORT).show();
+                toastMessage("Name and price are required");
                 return;
             }
 
@@ -67,17 +68,21 @@ public class AddProductActivity extends AppCompatActivity {
                 int responseCode = conn.getResponseCode();
                 mainHandler.post(() -> {
                     if (responseCode == HttpURLConnection.HTTP_CREATED) {
-                        Toast.makeText(this, "Product added successfully", Toast.LENGTH_SHORT).show();
+                        toastMessage("Product added successfully");
                         finish();
                     } else {
-                        Toast.makeText(this, "Failed to add product", Toast.LENGTH_SHORT).show();
+                        toastMessage("Failed to add product");
                     }
                 });
 
             } catch (Exception e) {
                 e.printStackTrace();
-                mainHandler.post(() -> Toast.makeText(this, "Error occurred", Toast.LENGTH_SHORT).show());
+                mainHandler.post(() -> toastMessage("Error occurred"));
             }
         }).start();
+    }
+
+    private void toastMessage(String message) {
+        Toast.makeText(this, message, Toast.LENGTH_SHORT).show();
     }
 }

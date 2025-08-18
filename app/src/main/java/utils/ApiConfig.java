@@ -2,7 +2,7 @@ package utils;
 
 public class ApiConfig {
     // Base URL of website API
-    public static final String BASE_URL = "https://essentials-monitor.up.railway.app/";
+    public static final String BASE_URL = "https://s23010843.me/";
 
     // Full endpoint URLs
     public static final String PRODUCTS_ENDPOINT = BASE_URL + "products";

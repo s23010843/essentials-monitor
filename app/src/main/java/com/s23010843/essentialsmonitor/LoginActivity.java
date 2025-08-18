@@ -7,9 +7,11 @@ import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.google.android.material.textfield.TextInputEditText;
+
 public class LoginActivity extends AppCompatActivity {
 
-    EditText username, password;
+    TextInputEditText username, password;
     Button loginBtn;
     DatabaseHelper db;
     SharedPreferences prefs;
@@ -49,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                             .putString("username", userInput)
                             .apply();
 
-                    startActivity(new Intent(this, MainActivity.class));
+                    pageRoute(MainActivity.class);
                     finish();
                 } else {
                     showToast("Invalid credentials");
@@ -60,12 +62,14 @@ public class LoginActivity extends AppCompatActivity {
         });
 
         TextView goSignup = findViewById(R.id.goSignup);
-        goSignup.setOnClickListener(v -> {
-            startActivity(new Intent(this, SignupActivity.class));
-        });
+        goSignup.setOnClickListener(v -> pageRoute(SignupActivity.class));
     }
 
     private void showToast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public void pageRoute(Class<?> page) {
+        startActivity(new Intent(this, page));
     }
 }

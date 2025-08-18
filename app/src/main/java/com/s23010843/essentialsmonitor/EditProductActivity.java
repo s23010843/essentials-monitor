@@ -1,17 +1,20 @@
 package com.s23010843.essentialsmonitor;
 
-import android.content.Intent;
 import android.location.Address;
 import android.location.Geocoder;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.*;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+
 import com.google.android.gms.maps.*;
 import com.google.android.gms.maps.model.*;
+
 import org.json.JSONObject;
+
 import static utils.ApiConfig.PRODUCTS_ENDPOINT;
 
 import java.io.*;
@@ -84,7 +87,8 @@ public class EditProductActivity extends AppCompatActivity implements OnMapReady
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
                 BufferedReader in = new BufferedReader(new InputStreamReader(conn.getInputStream()));
-                StringBuilder sb = new StringBuilder(); String line;
+                StringBuilder sb = new StringBuilder();
+                String line;
                 while ((line = in.readLine()) != null) sb.append(line);
                 in.close();
 
@@ -175,7 +179,8 @@ public class EditProductActivity extends AppCompatActivity implements OnMapReady
                 if (list != null && !list.isEmpty()) {
                     Address addr = list.get(0);
                     LatLng point = new LatLng(addr.getLatitude(), addr.getLongitude());
-                    lat = point.latitude; lon = point.longitude;
+                    lat = point.latitude;
+                    lon = point.longitude;
 
                     mainHandler.post(() -> {
                         inputLocation.setText(addr.getAddressLine(0));

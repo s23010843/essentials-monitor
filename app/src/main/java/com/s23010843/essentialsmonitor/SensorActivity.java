@@ -2,6 +2,7 @@ package com.s23010843.essentialsmonitor;
 
 import android.os.Bundle;
 import android.widget.TextView;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SensorActivity extends AppCompatActivity {
@@ -19,9 +20,11 @@ public class SensorActivity extends AppCompatActivity {
         double lat = getIntent().getDoubleExtra("lat", 0.0);
         double lon = getIntent().getDoubleExtra("lon", 0.0);
 
-        sensorName.setText("Sensor: Temperature");
+        String temp = "Sensor: Temperature";
+        sensorName.setText(temp);
         // Simulate based on coordinates
-        sensorValue.setText("Value at [" + lat + ", " + lon + "]: " + simulateTemperature(lat, lon));
+        String value = "Value at [" + lat + ", " + lon + "]: " + simulateTemperature(lat, lon);
+        sensorValue.setText(value);
     }
 
     private String simulateTemperature(double lat, double lon) {

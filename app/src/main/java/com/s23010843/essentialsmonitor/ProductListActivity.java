@@ -6,6 +6,7 @@ import android.os.Handler;
 import android.os.Looper;
 import android.util.Log;
 import android.widget.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import org.json.JSONArray;
@@ -45,14 +46,14 @@ public class ProductListActivity extends AppCompatActivity {
 
         loadProductsFromApi();
 
-        addProductBtn.setOnClickListener(v -> startActivity(new Intent(this, AddProductActivity.class)));
+        addProductBtn.setOnClickListener(v -> pageRoute(AddProductActivity.class));
 
         productList.setOnItemClickListener((parent, view, position, id) -> {
             if (position >= 0 && position < productIds.size()) {
                 String productId = productIds.get(position);
                 Intent intent = new Intent(this, EditProductActivity.class);
                 intent.putExtra("product_id", productId);
-                startActivity(intent);
+                pageRoute(EditProductActivity.class);
             } else {
                 Log.e(TAG, "Clicked position out of bounds: " + position);
             }
@@ -94,9 +95,7 @@ public class ProductListActivity extends AppCompatActivity {
 
                     tempIds.add(id);
                     tempDisplayList.add(
-                            name + "\n"
-                            + "$" + price + "\n"
-                            + location);
+                            name + "\n" + "$" + price + "\n" + location);
                 }
 
                 mainHandler.post(() -> {
@@ -109,7 +108,7 @@ public class ProductListActivity extends AppCompatActivity {
 
             } catch (Exception e) {
                 Log.e(TAG, "Error fetching products", e);
-                mainHandler.post(() -> Toast.makeText(ProductListActivity.this, "Failed to load products", Toast.LENGTH_SHORT).show());
+                mainHandler.post(() -> toast("Failed to load products"));
             }
         }).start();
     }
@@ -118,5 +117,13 @@ public class ProductListActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         loadProductsFromApi();
+    }
+
+    private void toast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
+    }
+
+    public void pageRoute(Class<?> page) {
+        startActivity(new Intent(this, page));
     }
 }

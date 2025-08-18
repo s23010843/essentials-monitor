@@ -1,9 +1,9 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:map="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    android:padding="16dp"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
 
     <fragment
         android:id="@+id/map"
@@ -27,8 +27,8 @@
         android:id="@+id/addressTv"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Address will appear here"
         android:padding="8dp"
+        android:text="Address will appear here"
         android:textColor="@android:color/black" />
 
     <EditText

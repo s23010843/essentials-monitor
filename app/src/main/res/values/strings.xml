@@ -1,7 +1,7 @@
 <resources>
     <!-- App Info -->
     <string name="app_name">Essentials Monitor</string>
-    <string name="app_version">v1.0.6</string>
+    <string name="app_version">v1.0.7</string>
     <string name="app_rating">4.8/5</string>
     <string name="app_description">Stay informed about prices and availability of essential items in your area. Track real-time prices, find the best deals, and make smart purchasing decisions with ease.</string>
     <string name="app_logo">App Logo</string>

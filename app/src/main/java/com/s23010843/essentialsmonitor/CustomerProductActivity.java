@@ -2,6 +2,7 @@ package com.s23010843.essentialsmonitor;
 
 import static utils.ApiConfig.PRODUCTS_ENDPOINT;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.util.Log;
@@ -38,6 +39,7 @@ public class CustomerProductActivity extends AppCompatActivity {
         loadProductsFromApi();
     }
 
+    @SuppressLint("StaticFieldLeak")
     private void loadProductsFromApi() {
         new AsyncTask<Void, Void, String>() {
             @Override
@@ -71,7 +73,7 @@ public class CustomerProductActivity extends AppCompatActivity {
             @Override
             protected void onPostExecute(String result) {
                 if (result == null) {
-                    Toast.makeText(CustomerProductActivity.this, "Failed to load products", Toast.LENGTH_SHORT).show();
+                    toast("Failed to load products");
                     return;
                 }
 
@@ -92,9 +94,13 @@ public class CustomerProductActivity extends AppCompatActivity {
 
                 } catch (Exception e) {
                     Log.e("PARSE_ERROR", "Error parsing products", e);
-                    Toast.makeText(CustomerProductActivity.this, "Error parsing product data", Toast.LENGTH_SHORT).show();
+                    toast("Error parsing product data");
                 }
             }
         }.execute();
+    }
+
+    private void toast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }

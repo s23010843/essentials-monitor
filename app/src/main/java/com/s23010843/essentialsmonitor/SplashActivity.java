@@ -2,9 +2,11 @@ package com.s23010843.essentialsmonitor;
 
 import android.content.*;
 import android.os.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SplashActivity extends AppCompatActivity {
+    private static final int SPLASH_TIMEOUT = 2000;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,10 +24,10 @@ public class SplashActivity extends AppCompatActivity {
                 pageRoute(LoginActivity.class);
             }
             finish();
-        }, 2000);
+        }, SPLASH_TIMEOUT);
     }
 
-    public void pageRoute(Class<?> page){
+    public void pageRoute(Class<?> page) {
         startActivity(new Intent(this, page));
     }
 }

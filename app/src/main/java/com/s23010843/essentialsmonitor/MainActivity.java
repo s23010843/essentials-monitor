@@ -12,8 +12,8 @@ public class MainActivity extends AppCompatActivity {
 
     TextView tvWelcome;
     SharedPreferences prefs;
-    Button productBtn,btnProfile,settingsBtn,mapBtn,sensorBtn,customerProductBtn;
-    String role ="customer";//"customer", "owner";
+    Button btnProduct, btnProfile, settingsBtn, mapBtn, sensorBtn, customerProductBtn;
+    String role = "customer";//"customer", "owner";
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -21,24 +21,23 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        productBtn = findViewById(R.id.productBtn);
+        btnProduct = findViewById(R.id.btnProduct);
         btnProfile = findViewById(R.id.btnProfile);
         settingsBtn = findViewById(R.id.settingsBtn);
         mapBtn = findViewById(R.id.mapBtn);
         sensorBtn = findViewById(R.id.sensorBtn);
-        customerProductBtn=findViewById(R.id.customerProductBtn);
+        customerProductBtn = findViewById(R.id.customerProductBtn);
 
         tvWelcome = findViewById(R.id.tvWelcome);
         prefs = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
 
         // Simulated user data
         role = prefs.getString("role", role);
-
         tvWelcome.setText("Welcome, " + role);
 
         if (role.equals("owner")) {
-            productBtn.setVisibility(View.VISIBLE);
-            productBtn.setOnClickListener(v -> {
+            btnProduct.setVisibility(View.VISIBLE);
+            btnProduct.setOnClickListener(v -> {
                 pageRoute(ProductListActivity.class);
                 toastMessage("Owner, you can update now");
             });

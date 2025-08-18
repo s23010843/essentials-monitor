@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.widget.*;
+
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -34,8 +35,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
         inputLat = findViewById(R.id.inputLat);
         inputLon = findViewById(R.id.inputLon);
         searchLocation = findViewById(R.id.searchLocation);
-        Button searchBtn = findViewById(R.id.searchBtn);
         addressTv = findViewById(R.id.addressTv);
+        Button searchBtn = findViewById(R.id.searchBtn);
         Button saveLocation = findViewById(R.id.saveLocation);
         Button viewSensorBtn = findViewById(R.id.viewSensorBtn);
 

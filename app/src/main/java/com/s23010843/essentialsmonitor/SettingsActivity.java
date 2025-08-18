@@ -3,6 +3,7 @@ package com.s23010843.essentialsmonitor;
 import android.content.*;
 import android.os.Bundle;
 import android.widget.*;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class SettingsActivity extends AppCompatActivity {
@@ -25,7 +26,7 @@ public class SettingsActivity extends AppCompatActivity {
 
         themeSwitch.setOnCheckedChangeListener((buttonView, isChecked) -> {
             prefs.edit().putBoolean("dark_mode", isChecked).apply();
-            Toast.makeText(this, "Theme set. Restart app to apply.", Toast.LENGTH_SHORT).show();
+            toast("Theme set. Restart app to apply.");
         });
 
         logoutBtn.setOnClickListener(v -> {
@@ -33,5 +34,9 @@ public class SettingsActivity extends AppCompatActivity {
             startActivity(new Intent(this, LoginActivity.class));
             finish();
         });
+    }
+
+    private void toast(String msg) {
+        Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
     }
 }
