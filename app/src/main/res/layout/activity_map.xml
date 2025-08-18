@@ -1,0 +1,59 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:map="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <fragment
+        android:id="@+id/map"
+        android:name="com.google.android.gms.maps.SupportMapFragment"
+        android:layout_width="match_parent"
+        android:layout_height="300dp" />
+
+    <EditText
+        android:id="@+id/searchLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Search location name" />
+
+    <Button
+        android:id="@+id/searchBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Search" />
+
+    <TextView
+        android:id="@+id/addressTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Address will appear here"
+        android:padding="8dp"
+        android:textColor="@android:color/black" />
+
+    <EditText
+        android:id="@+id/inputLat"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Latitude"
+        android:inputType="numberDecimal" />
+
+    <EditText
+        android:id="@+id/inputLon"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Longitude"
+        android:inputType="numberDecimal" />
+
+    <Button
+        android:id="@+id/saveLocation"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Save Location" />
+
+    <Button
+        android:id="@+id/viewSensorBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="View Sensor Data" />
+</LinearLayout>

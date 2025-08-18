@@ -1,8 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<shape android:shape="oval" xmlns:android="http://schemas.android.com/apk/res/android">
-    <gradient
-        android:startColor="@color/card_teal"
-        android:endColor="@color/gradient_orange_start"
-        android:angle="45" />
-    <stroke android:width="3dp" android:color="@color/gradient_orange_start" />
-</shape>

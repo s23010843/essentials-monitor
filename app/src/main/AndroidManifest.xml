@@ -6,20 +6,26 @@
     <uses-permission android:name="android.permission.INTERNET" />
     <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
     <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+        android:maxSdkVersion="32" />
+
+    <!-- <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" /> -->
+
     <!-- Storage permissions for compatibility with devices running Android 12 (API level 32) and below -->
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+    <!-- <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
         android:maxSdkVersion="32"
         tools:ignore="ScopedStorage" />
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"
+    <uses-permission
+        android:name="android.permission.READ_EXTERNAL_STORAGE"
         android:maxSdkVersion="32" />
     <uses-permission android:name="android.permission.CAMERA" />
     <uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
     <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
-    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" /> -->
 
     <!-- Hardware features -->
-    <uses-feature
+    <!-- <uses-feature
         android:name="android.hardware.location"
         android:required="false" />
     <uses-feature
@@ -30,7 +36,7 @@
         android:required="false" />
     <uses-feature
         android:name="android.hardware.camera"
-        android:required="false" />
+        android:required="false" /> -->
 
     <application
         android:allowBackup="true"
@@ -38,10 +44,10 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:networkSecurityConfig="@xml/network_security_config"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.EssentialsMonitor"
-        android:networkSecurityConfig="@xml/network_security_config"
         tools:targetApi="31">
 
         <!-- Google Maps API Key -->
@@ -49,101 +55,54 @@
             android:name="com.google.android.geo.API_KEY"
             android:value="@string/GOOGLE_MAP_API_KEY" />
 
-        <!-- Splash Activity -->
+
         <activity
-            android:name=".AppStartupActivity"
+            android:name=".SensorActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MapActivity"
+            android:exported="false"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".CustomerProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".AddProductActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProductListActivity"
+            android:exported="false" />
+        <activity
+            android:name=".EditProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="false" />
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SignupActivity"
+            android:exported="false" />
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".LoginActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <activity
-            android:name=".DashboardHomeActivity"
-            android:exported="false" />
-
-        <activity
-            android:name=".ProductBrowserActivity"
-            android:exported="false"
-            android:parentActivityName=".DashboardHomeActivity" />
-
-        <!-- Authentication Activities -->
-        <activity
-            android:name=".UserAuthenticationActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize">
-        </activity>
-
-        <activity
-            android:name=".UserRegistrationActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-
-        <!-- Product Activities -->
-        <activity
-            android:name=".ProductListActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize" />
-
-        <activity
-            android:name=".ProductDetailActivity"
-            android:exported="false"
-            android:parentActivityName=".ProductListActivity" />
-
-        <!-- Price and Store Activities -->
-        <activity
-            android:name=".PriceReportActivity"
-            android:exported="false"
-            android:windowSoftInputMode="adjustResize"
-            android:parentActivityName=".ProductDetailActivity" />
-
-        <!-- Map Activity -->
-        <activity
-            android:name=".MapViewActivity"
-            android:exported="false"
-            android:parentActivityName=".DashboardHomeActivity" />
-
-        <!-- Profile Activities -->
-        <activity
-            android:name=".UserProfileActivity"
-            android:exported="false"
-            android:parentActivityName=".DashboardHomeActivity" />
-
-        <!-- Settings Activity -->
-        <activity
-            android:name=".AppSettingsActivity"
-            android:exported="false"
-            android:parentActivityName=".UserProfileActivity" />
-
-        <activity
-            android:name=".ProductCreationActivity"
-            android:exported="false"
-            android:parentActivityName=".DashboardHomeActivity" />
-
-        <!-- GeoSensor Activity -->
-        <activity
-            android:name=".GeoSensorActivity"
-            android:exported="false"
-            android:parentActivityName=".DashboardHomeActivity" />
-
-        <!-- Store Management Activity -->
-        <activity
-            android:name=".StoreManagementActivity"
-            android:exported="false"
-            android:parentActivityName=".DashboardHomeActivity" />
-
-        <!-- Report Analytics Activity -->
-        <activity
-            android:name=".ReportAnalyticsActivity"
-            android:exported="false"
-            android:parentActivityName=".DashboardHomeActivity" />
-
-        <!-- Edit Profile Activity -->
-        <activity
-            android:name=".EditProfileActivity"
-            android:exported="false"
-            android:parentActivityName=".UserProfileActivity" />
 
     </application>
 

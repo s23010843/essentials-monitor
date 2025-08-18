@@ -1,10 +1,45 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Standard Colors -->
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="transparent">#00000000</color>
+    <color name="divider">#E0E0E0</color>
+
     <!-- Primary Brand Colors - Vibrant Blue -->
     <color name="primary">#2196F3</color>
     <color name="primary_dark">#1976D2</color>
     <color name="primary_light">#64B5F6</color>
-    
+
+    <!-- Page Navigation -->
+    <color name="link">@color/primary</color>
+
+    <!-- Background Colors -->
+    <color name="app_background">@color/black</color>
+    <color name="btn_background">#7C7C7C</color>
+
+    <!-- Text Color -->
+    <color name="input_text">@color/white</color>
+    <color name="btn_text">@color/black</color>
+
+    <!-- Hint Color -->
+    <color name="input_hint">#7C7C7C</color>
+
+    <!-- Title Color -->
+    <color name="title_auth">@color/white</color>
+
+
+
+
+
+
+
+
+
+
+
+
+
     <!-- Secondary Colors - Energetic Green -->
     <color name="secondary">#4CAF50</color>
     <color name="secondary_dark">#388E3C</color>
@@ -67,12 +102,7 @@
     <color name="card_red">#FFEBEE</color>
     <color name="card_teal">#E0F2F1</color>
     
-    <!-- Standard Colors -->
-    <color name="black">#FF000000</color>
-    <color name="white">#FFFFFFFF</color>
-    <color name="transparent">#00000000</color>
-    <color name="divider">#E0E0E0</color>
-    
+
     <!-- Legacy Support Colors -->
     <color name="colorPrimary">@color/primary</color>
     <color name="colorPrimaryDark">@color/primary_dark</color>

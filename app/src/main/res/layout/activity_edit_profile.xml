@@ -1,33 +1,41 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center_horizontal"
     android:orientation="vertical"
-    android:padding="24dp">
+    android:padding="20dp">
+
+    <ImageView
+        android:id="@+id/profileImg"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginBottom="20dp"
+        android:scaleType="centerCrop"
+        android:src="@drawable/ic_user_placeholder" />
 
     <EditText
-        android:id="@+id/edit_name_edit_text"
+        android:id="@+id/editName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Name"
-        android:textSize="16sp"
-        android:inputType="textPersonName" />
+        android:hint="@string/enter_name"
+        android:inputType="textPersonName"
+        android:minHeight="48dp"
+        android:padding="12dp" />
 
     <EditText
-        android:id="@+id/edit_email_edit_text"
+        android:id="@+id/editSocial"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Email"
-        android:textSize="16sp"
-        android:inputType="textEmailAddress" />
+        android:layout_marginTop="16dp"
+        android:hint="Social Link"
+        android:inputType="textUri"
+        android:minHeight="48dp"
+        android:padding="12dp" />
 
     <Button
-        android:id="@+id/save_profile_button"
+        android:id="@+id/saveBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save Profile"
-        android:backgroundTint="@color/colorPrimary"
-        android:textColor="@android:color/white"
-        android:layout_marginTop="24dp" />
-
+        android:layout_marginTop="24dp"
+        android:text="Save" />
 </LinearLayout>

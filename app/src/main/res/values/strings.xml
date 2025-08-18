@@ -1,7 +1,7 @@
 <resources>
     <!-- App Info -->
     <string name="app_name">Essentials Monitor</string>
-    <string name="app_version">v1.0.5</string>
+    <string name="app_version">v1.0.6</string>
     <string name="app_rating">4.8/5</string>
     <string name="app_description">Stay informed about prices and availability of essential items in your area. Track real-time prices, find the best deals, and make smart purchasing decisions with ease.</string>
     <string name="app_logo">App Logo</string>
@@ -11,21 +11,57 @@
 
     <string name="completed_users">60M+</string>
     <string name="completed_info">Prices Tracked</string>
+    <string name="GOOGLE_MAP_API_KEY">AIzaSyAARbWU1iWdlGUWaCzunREgC1chQgIdVPY</string>
 
-    <!-- Signup -->
-    <string name="create_account">Create Account</string>
-    <string name="full_name">Full Name</string>
-    <string name="email">Email</string>
-    <string name="password">Password</string>
-    <string name="confirm_password">Confirm Password</string>
+    <string name="blank" />
+
+    <!-- Titles -->
+    <string name="title_activity_maps">Find Location</string>
+
+    <!-- Input -->
+    <string name="enter_username">Enter the Username</string>
+    <string name="enter_name">Enter your Name</string>
+    <string name="enter_email">Enter the Email</string>
+    <string name="enter_password">Enter the password</string>
+
+    <!-- =========== Auth (Signup,Login) Pages ====================== -->
+    <!-- Signup Page  -->
     <string name="sign_up">Sign Up</string>
+    <string name="signup_button">Create account</string>
+    <string name="navigate_to_login">Already have an account? Sign In</string>
 
-    <!-- Login -->
-    <string name="welcome_back">Welcome Back</string>
+    <!-- Login Page  -->
     <string name="login">Login</string>
-    <string name="no_account_sign_up">No account? Sign up</string>
+    <string name="login_button">Log In to Continue</string>
+    <string name="navigate_to_signup">Don\'t have an account? Sign up</string>
 
-    <!-- Dashboard -->
+    <!--
+    <string name="confirm_password">Confirm Password</string>
+
+     =========== User (Profile, EditProfile) Pages ======================
+     Profile Page
+    <string name="profile">Profile</string>
+    <string name="user_info">User Info</string>
+    <string name="profile_name">Name     &#160;&#160;&#160;&#160;&#160;&#160; :</string>
+    <string name="profile_username">Username :</string>
+    <string name="profile_email">Email    &#160;&#160;&#160;&#160;&#160;&#160;&#160; :</string>
+
+     EditProfile Page
+    <string name="edit_profile">Edit Profile</string>
+    <string name="new_name">New Name</string>
+    <string name="change_name">Change Name</string>
+    <string name="new_username">New Username</string>
+    <string name="change_username">Change Username</string>
+    <string name="new_password">New Password</string>
+    <string name="change_password">Change Password</string>
+
+
+     Home Page
+    <string name="welcome_back">Welcome Back</string>
+     ============================================================
+
+
+     Dashboard
     <string name="title_activity_dashboard">Dashboard</string>
     <string name="welcome_message">Welcome to EssentialsMonitor</string>
     <string name="search_products">Search Products</string>
@@ -34,31 +70,28 @@
     <string name="favorites">Favorites</string>
     <string name="report_price">Report Price</string>
     <string name="store_list">Store List</string>
-    <string name="profile">Profile</string>
     <string name="settings">Settings</string>
 
-    <!-- Map -->
-    <string name="title_activity_maps">Find Location</string>
-    <string name="search_location">Search location...</string>
+    Map
+    <string name="search_location">Search location…</string>
     <string name="search">Search</string>
     <string name="my_location">My Location</string>
 
-    <!-- Notifications Settings -->
+    Notifications Settings
     <string name="_5_miles">5 miles</string>
 
-    <!-- Favorite -->
+    Favorite
     <string name="my_favorites">My Favorites</string>
     <string name="clear_all_favorites">Clear All Favorites</string>
     <string name="no_favorites_yet_add_products_to_your_favorites_to_see_them_here">No favorites
         yet. Add products to your favorites to see them here.</string>
 
-    <!-- Search Product -->
-    <string name="search_for_products">Search for products...</string>
+    Search Product
+    <string name="search_for_products">Search for products…</string>
 
-    <!-- Profile -->
+    Profile
     <string name="profile_picture">Profile Picture</string>
     <string name="guest_user">Guest User</string>
-    <string name="edit_profile">Edit Profile</string>
     <string name="logout">Logout</string>
     <string name="not_logged_in">Not logged in</string>
     <string name="_0_reports_submitted">0 reports submitted</string>
@@ -68,33 +101,33 @@
     <string name="change_photo">Change Photo</string>
     <string name="save_changes">Save Changes</string>
 
-    <!-- Store -->
+    Store
     <string name="nearby_stores">Nearby Stores</string>
     <string name="refresh_location">Refresh Location</string>
 
-    <!-- Report -->
+    Report
     <string name="product_name">Product Name</string>
     <string name="price">Price</string>
     <string name="store_name">Store Name</string>
     <string name="additional_notes_optional">Additional Notes (Optional)</string>
     <string name="submit_report">Submit Report</string>
     <string name="cancel">Cancel</string>
-    
-    <!-- Additional missing strings -->
+
+    Additional missing strings
     <string name="no_account">Don\'t have an account? Sign up</string>
     <string name="have_account">Already have an account? Sign in</string>
-    <string name="GOOGLE_MAP_API_KEY">AIzaSyAARbWU1iWdlGUWaCzunREgC1chQgIdVPY</string>
 
-    <!-- Bottom Navigation Tabs-->
+    Bottom Navigation Tabs
     <string name="home">Home</string>
     <string name="sensor">Sensor</string>
     <string name="store_location">Store Location</string>
 
-    <!-- Images -->
+    Images
     <string name="products">Products</string>
     <string name="welcome_description">Track prices, explore locations, and manage your essential products with ease</string>
     <string name="locations">Locations</string>
     <string name="price_reports">Price Reports</string>
     <string name="add_product">Add Product</string>
-
+    <string name="welcome_test">"Welcome, "</string>
+    -->
 </resources>

@@ -1,0 +1,60 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:gravity="center"
+    android:padding="30dp">
+
+    <TextView
+        android:id="@+id/tvTitle"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Dashboard"
+        android:textSize="30sp" />
+
+    <TextView
+        android:id="@+id/tvWelcome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/blank"
+        android:textSize="30sp" />
+
+    <Button
+        android:id="@+id/btnProfile"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Profile" />
+
+    <Button
+        android:id="@+id/settingsBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Settings" />
+
+    <Button
+        android:id="@+id/mapBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Map" />
+
+    <Button
+        android:id="@+id/sensorBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Sensors" />
+
+    <Button
+        android:id="@+id/productBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Manage Products"
+        android:visibility="gone" />
+
+
+    <Button
+        android:id="@+id/customerProductBtn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Products" />
+
+</LinearLayout>

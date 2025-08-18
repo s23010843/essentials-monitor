@@ -1,103 +1,122 @@
-
 package com.s23010843.essentialsmonitor;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.Button;
-import android.widget.TextView;
-import android.widget.Toast;
-
+import android.os.Handler;
+import android.os.Looper;
+import android.util.Log;
+import android.widget.*;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.recyclerview.widget.LinearLayoutManager;
-import androidx.recyclerview.widget.RecyclerView;
 
-import com.s23010843.essentialsmonitor.DatabaseHelper;
-import com.s23010843.essentialsmonitor.ProductAdapter;
-import com.s23010843.essentialsmonitor.ProductCreationActivity;
+import org.json.JSONArray;
+import org.json.JSONObject;
 
-import java.util.List;
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.util.ArrayList;
+
+import static utils.ApiConfig.PRODUCTS_ENDPOINT;
 
 public class ProductListActivity extends AppCompatActivity {
-    private RecyclerView productsRecyclerView;
-    private TextView storeNameTextView;
-    private DatabaseHelper databaseHelper;
-    private ProductAdapter productAdapter;
-    private String storeName;
-    
+
+    private static final String TAG = "ProductListActivity";
+    private static final String API_URL = PRODUCTS_ENDPOINT;
+
+    ListView productList;
+    Button addProductBtn;
+    ArrayList<String> productDisplayList = new ArrayList<>();
+    ArrayList<String> productIds = new ArrayList<>();
+    ArrayAdapter<String> adapter;
+
+    private final Handler mainHandler = new Handler(Looper.getMainLooper());
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getSupportActionBar() != null) {
-            getSupportActionBar().hide();
-        }
-        int layoutId = getResources().getIdentifier("activity_product_catalog", "layout", getPackageName());
-        setContentView(layoutId);
-        
-        databaseHelper = new DatabaseHelper(this);
-        
-        // Get store info from intent
-        int storeId = getIntent().getIntExtra("store_id", -1);
-        storeName = getIntent().getStringExtra("store_name");
+        setContentView(R.layout.activity_product_list);
 
-        // Defensive checks to avoid crashes
-        if (storeName == null) {
-            storeName = "Unknown Store";
-        }
-        if (storeId == -1) {
-            Toast.makeText(this, "Showing all products. Select a store for more details.", Toast.LENGTH_LONG).show();
-        }
+        productList = findViewById(R.id.productList);
+        addProductBtn = findViewById(R.id.addProductBtn);
 
-        // Initialize views safely - using resource names as fallback
-        productsRecyclerView = findViewById(getResources().getIdentifier("search_results_recycler_view", "id", getPackageName()));
-        
-        // Defensive: storeNameTextView may not exist in layout, so check and assign if present
-        int storeNameId = getResources().getIdentifier("store_name_text_view", "id", getPackageName());
-        if (storeNameId != 0) {
-            storeNameTextView = findViewById(storeNameId);
-            if (storeNameTextView != null && storeName != null) {
-                storeNameTextView.setText("Products at " + storeName);
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, productDisplayList);
+        productList.setAdapter(adapter);
+
+        loadProductsFromApi();
+
+        addProductBtn.setOnClickListener(v -> startActivity(new Intent(this, AddProductActivity.class)));
+
+        productList.setOnItemClickListener((parent, view, position, id) -> {
+            if (position >= 0 && position < productIds.size()) {
+                String productId = productIds.get(position);
+                Intent intent = new Intent(this, EditProductActivity.class);
+                intent.putExtra("product_id", productId);
+                startActivity(intent);
+            } else {
+                Log.e(TAG, "Clicked position out of bounds: " + position);
             }
-        }
-        
-        Button addProductButton = null;
-        int addButtonId = getResources().getIdentifier("add_product_button", "id", getPackageName());
-        if (addButtonId != 0) {
-            addProductButton = findViewById(addButtonId);
-        }
+        });
+    }
 
-        setupRecyclerView();
-        loadProducts();
+    private void loadProductsFromApi() {
+        new Thread(() -> {
+            try {
+                URL url = new URL(API_URL);
+                HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+                conn.setRequestMethod("GET");
 
-        // Only set listener if addProductButton is present in layout
-        if (addProductButton != null) {
-            addProductButton.setOnClickListener(v -> startActivity(new Intent(ProductListActivity.this, ProductCreationActivity.class)));
-        }
-    }
-    
-    private void initializeViews() {
+                int responseCode = conn.getResponseCode();
+                if (responseCode != HttpURLConnection.HTTP_OK) {
+                    Log.e(TAG, "Server returned: " + responseCode);
+                    return;
+                }
 
-        if (storeName != null) {
-            storeNameTextView.setText("Products at " + storeName);
-        }
+                BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
+                StringBuilder sb = new StringBuilder();
+                String line;
+                while ((line = reader.readLine()) != null) {
+                    sb.append(line);
+                }
+                reader.close();
+
+                String result = sb.toString();
+                JSONArray jsonArray = new JSONArray(result);
+                ArrayList<String> tempDisplayList = new ArrayList<>();
+                ArrayList<String> tempIds = new ArrayList<>();
+
+                for (int i = 0; i < jsonArray.length(); i++) {
+                    JSONObject product = jsonArray.getJSONObject(i);
+                    String id = product.getString("_id");
+                    String name = product.getString("name");
+                    double price = product.getDouble("price");
+                    double location = product.getDouble("location");
+
+                    tempIds.add(id);
+                    tempDisplayList.add(
+                            name + "\n"
+                            + "$" + price + "\n"
+                            + location);
+                }
+
+                mainHandler.post(() -> {
+                    productIds.clear();
+                    productDisplayList.clear();
+                    productIds.addAll(tempIds);
+                    productDisplayList.addAll(tempDisplayList);
+                    adapter.notifyDataSetChanged();
+                });
+
+            } catch (Exception e) {
+                Log.e(TAG, "Error fetching products", e);
+                mainHandler.post(() -> Toast.makeText(ProductListActivity.this, "Failed to load products", Toast.LENGTH_SHORT).show());
+            }
+        }).start();
     }
-    
-    private void setupRecyclerView() {
-        productsRecyclerView.setLayoutManager(new LinearLayoutManager(this));
-        productAdapter = new ProductAdapter(this);
-        productsRecyclerView.setAdapter(productAdapter);
-    }
-    
-    private void loadProducts() {
-        // Load all products for now - in a real app you might filter by store
-        List<Product> products = databaseHelper.getAllProducts();
-        productAdapter.updateProducts(products);
-    }
-    
+
     @Override
-    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        super.onActivityResult(requestCode, resultCode, data);
-        if (requestCode == 1 && resultCode == RESULT_OK) {
-            loadProducts(); // Refresh the list
-        }
+    protected void onResume() {
+        super.onResume();
+        loadProductsFromApi();
     }
 }
