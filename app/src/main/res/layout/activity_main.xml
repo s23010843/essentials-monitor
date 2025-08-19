@@ -9,7 +9,7 @@
         android:id="@+id/tvTitle"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dashboard"
+        android:text="@string/dashboard"
         android:textSize="30sp" />
 
     <TextView
@@ -23,31 +23,31 @@
         android:id="@+id/btnProfile"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Profile" />
+        android:text="@string/profile" />
 
     <Button
         android:id="@+id/settingsBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Settings" />
+        android:text="@string/settings" />
 
     <Button
         android:id="@+id/mapBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Map" />
+        android:text="@string/map" />
 
     <Button
         android:id="@+id/sensorBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sensors" />
+        android:text="@string/sensors" />
 
     <Button
         android:id="@+id/btnProduct"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Manage Products"
+        android:text="@string/manage_products"
         android:visibility="gone" />
 
 
@@ -55,6 +55,6 @@
         android:id="@+id/customerProductBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Products" />
+        android:text="@string/products" />
 
 </LinearLayout>

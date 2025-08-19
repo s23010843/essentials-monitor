@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:map="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
@@ -8,34 +7,50 @@
 
     <EditText
         android:id="@+id/inputName"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Product Name" />
+        android:autofillHints="name"
+        android:hint="@string/product_name"
+        android:inputType="textPersonName"
+        android:maxWidth="488dp"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/inputPrice"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Price"
-        android:inputType="numberDecimal" />
+        android:autofillHints="price"
+        android:hint="@string/price"
+        android:inputType="numberDecimal"
+        android:maxWidth="488dp"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/inputLocation"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Location (editable or map-picked)" />
+        android:autofillHints="postalAddress"
+        android:hint="@string/location"
+        android:inputType="textPostalAddress"
+        android:maxWidth="488dp"
+        android:minHeight="48dp" />
 
     <EditText
         android:id="@+id/searchLocation"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Search location on map" />
+        android:autofillHints="postalAddress"
+        android:hint="@string/search_location_on_map"
+        android:inputType="textPostalAddress"
+        android:maxWidth="488dp"
+        android:minHeight="48dp" />
 
     <Button
         android:id="@+id/searchBtn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Search Map" />
+        android:maxWidth="320dp"
+        android:text="@string/search_map" />
 
     <fragment
         android:id="@+id/map"
@@ -45,14 +60,16 @@
 
     <Button
         android:id="@+id/updateBtn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Update Product" />
+        android:maxWidth="320dp"
+        android:text="@string/update_product" />
 
     <Button
         android:id="@+id/deleteBtn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Delete Product"
+        android:maxWidth="320dp"
+        android:text="@string/delete_product"
         android:textColor="@android:color/holo_red_dark" />
 </LinearLayout>

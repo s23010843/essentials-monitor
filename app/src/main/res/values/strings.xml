@@ -1,7 +1,7 @@
 <resources>
     <!-- App Info -->
     <string name="app_name">Essentials Monitor</string>
-    <string name="app_version">v1.0.7</string>
+    <string name="app_version">v1.0.8</string>
     <string name="app_rating">4.8/5</string>
     <string name="app_description">Stay informed about prices and availability of essential items in your area. Track real-time prices, find the best deals, and make smart purchasing decisions with ease.</string>
     <string name="app_logo">App Logo</string>
@@ -35,99 +35,43 @@
     <string name="login_button">Log In to Continue</string>
     <string name="navigate_to_signup">Don\'t have an account? Sign up</string>
 
-    <!--
-    <string name="confirm_password">Confirm Password</string>
-
-     =========== User (Profile, EditProfile) Pages ======================
-     Profile Page
-    <string name="profile">Profile</string>
+    <!-- =========== User (Profile, EditProfile) Pages ====================== -->
+    <!-- Profile Page  -->
+    <string name="user_profile">User Profile</string>
     <string name="user_info">User Info</string>
-    <string name="profile_name">Name     &#160;&#160;&#160;&#160;&#160;&#160; :</string>
-    <string name="profile_username">Username :</string>
-    <string name="profile_email">Email    &#160;&#160;&#160;&#160;&#160;&#160;&#160; :</string>
-
-     EditProfile Page
+    <string name="profile_name">Name &#160;&#160;&#160;&#160;&#160;&#160;&#160; :</string>
+    <string name="profile_username">Username &#160;:</string>
+    <string name="profile_social_link">Social Link :</string>
     <string name="edit_profile">Edit Profile</string>
-    <string name="new_name">New Name</string>
-    <string name="change_name">Change Name</string>
-    <string name="new_username">New Username</string>
-    <string name="change_username">Change Username</string>
-    <string name="new_password">New Password</string>
-    <string name="change_password">Change Password</string>
-
-
-     Home Page
-    <string name="welcome_back">Welcome Back</string>
-     ============================================================
-
-
-     Dashboard
-    <string name="title_activity_dashboard">Dashboard</string>
-    <string name="welcome_message">Welcome to EssentialsMonitor</string>
-    <string name="search_products">Search Products</string>
-    <string name="categories">Categories</string>
-    <string name="map_view">Map View</string>
-    <string name="favorites">Favorites</string>
-    <string name="report_price">Report Price</string>
-    <string name="store_list">Store List</string>
+    <string name="welcome_intro">Smart shopping made simple</string>
     <string name="settings">Settings</string>
-
-    Map
-    <string name="search_location">Search location…</string>
-    <string name="search">Search</string>
-    <string name="my_location">My Location</string>
-
-    Notifications Settings
-    <string name="_5_miles">5 miles</string>
-
-    Favorite
-    <string name="my_favorites">My Favorites</string>
-    <string name="clear_all_favorites">Clear All Favorites</string>
-    <string name="no_favorites_yet_add_products_to_your_favorites_to_see_them_here">No favorites
-        yet. Add products to your favorites to see them here.</string>
-
-    Search Product
-    <string name="search_for_products">Search for products…</string>
-
-    Profile
-    <string name="profile_picture">Profile Picture</string>
-    <string name="guest_user">Guest User</string>
+    <string name="dark_mode">Dark Mode</string>
     <string name="logout">Logout</string>
-    <string name="not_logged_in">Not logged in</string>
-    <string name="_0_reports_submitted">0 reports submitted</string>
-    <string name="reports_submitted"> reports Submitted</string>
-    <string name="sample_email_account">user@example.com</string>
-    <string name="user_name">User Name</string>
-    <string name="change_photo">Change Photo</string>
-    <string name="save_changes">Save Changes</string>
-
-    Store
-    <string name="nearby_stores">Nearby Stores</string>
-    <string name="refresh_location">Refresh Location</string>
-
-    Report
+    <string name="sensor_temperature">Sensor: Temperature</string>
+    <string name="value">Value: --</string>
+    <string name="add_product">Add Product</string>
+    <string name="search_location_name">Search location name</string>
+    <string name="search">Search</string>
+    <string name="address_will_appear_here">Address will appear here</string>
+    <string name="latitude">Latitude</string>
+    <string name="longitude">Longitude</string>
+    <string name="save_location">Save Location</string>
+    <string name="view_sensor_data">View Sensor Data</string>
+    <string name="sensors">Sensors</string>
+    <string name="manage_products">Manage Products</string>
+    <string name="products">Products</string>
+    <string name="dashboard">Dashboard</string>
+    <string name="profile">Profile</string>
+    <string name="map">Map</string>
     <string name="product_name">Product Name</string>
     <string name="price">Price</string>
-    <string name="store_name">Store Name</string>
-    <string name="additional_notes_optional">Additional Notes (Optional)</string>
-    <string name="submit_report">Submit Report</string>
-    <string name="cancel">Cancel</string>
+    <string name="location">Location</string>
+    <string name="save_product">Save Product</string>
+    <string name="search_location_on_map">Search location on map</string>
+    <string name="search_map">Search Map</string>
+    <string name="update_product">Update Product</string>
+    <string name="delete_product">Delete Product</string>
+    <string name="social_link">Social Link</string>
+    <string name="save">Save</string>
 
-    Additional missing strings
-    <string name="no_account">Don\'t have an account? Sign up</string>
-    <string name="have_account">Already have an account? Sign in</string>
-
-    Bottom Navigation Tabs
-    <string name="home">Home</string>
-    <string name="sensor">Sensor</string>
-    <string name="store_location">Store Location</string>
-
-    Images
-    <string name="products">Products</string>
-    <string name="welcome_description">Track prices, explore locations, and manage your essential products with ease</string>
-    <string name="locations">Locations</string>
-    <string name="price_reports">Price Reports</string>
-    <string name="add_product">Add Product</string>
-    <string name="welcome_test">"Welcome, "</string>
-    -->
 </resources>

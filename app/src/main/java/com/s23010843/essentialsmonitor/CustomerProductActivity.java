@@ -51,7 +51,14 @@ public class CustomerProductActivity extends AppCompatActivity {
 
                     int responseCode = conn.getResponseCode();
                     if (responseCode != HttpURLConnection.HTTP_OK) {
-                        Log.e("API_ERROR", "Response Code: " + responseCode);
+                        BufferedReader errorReader = new BufferedReader(new InputStreamReader(conn.getErrorStream()));
+                        StringBuilder errorMsg = new StringBuilder();
+                        String line;
+                        while ((line = errorReader.readLine()) != null) {
+                            errorMsg.append(line);
+                        }
+                        errorReader.close();
+                        Log.e("API_ERROR", "HTTP " + responseCode + ": " + errorMsg);
                         return null;
                     }
 
@@ -78,9 +85,13 @@ public class CustomerProductActivity extends AppCompatActivity {
                 }
 
                 try {
-                    JSONArray jsonArray = new JSONArray(result);
-                    products.clear();
+                    Log.d("API_RESPONSE", result);
 
+                    // IFt response is a JSON object with a "products" array
+                    JSONObject responseObject = new JSONObject(result);
+                    JSONArray jsonArray = responseObject.getJSONArray("products");
+
+                    products.clear();
                     for (int i = 0; i < jsonArray.length(); i++) {
                         JSONObject product = jsonArray.getJSONObject(i);
                         String name = product.getString("name");
@@ -93,7 +104,7 @@ public class CustomerProductActivity extends AppCompatActivity {
                     adapter.notifyDataSetChanged();
 
                 } catch (Exception e) {
-                    Log.e("PARSE_ERROR", "Error parsing products", e);
+                    Log.e("PARSE_ERROR", "Failed parsing: " + result, e);
                     toast("Error parsing product data");
                 }
             }

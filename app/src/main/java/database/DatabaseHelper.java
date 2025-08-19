@@ -1,4 +1,4 @@
-package com.s23010843.essentialsmonitor;
+package database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 public class DatabaseHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "AppDB.db";
-    private static final int DATABASE_VERSION = 1;  // bump version since schema changed
+    private static final int DATABASE_VERSION = 1;
 
     public DatabaseHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -17,34 +17,33 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("CREATE TABLE auth (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "username TEXT UNIQUE, " +
-                "password TEXT, " +
-                "role TEXT)");
+        db.execSQL("CREATE TABLE auth ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "username TEXT UNIQUE, "
+                + "password TEXT, "
+                + "role TEXT)");
 
-        db.execSQL("CREATE TABLE owner (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "name TEXT, " +
-                "username TEXT UNIQUE, " +
-                "profileImg TEXT, " +
-                "socialLinks TEXT)");
+        db.execSQL("CREATE TABLE owner ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "name TEXT, "
+                + "username TEXT UNIQUE, "
+                + "profileImg TEXT, "
+                + "socialLinks TEXT)");
 
-        db.execSQL("CREATE TABLE customer (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "name TEXT, " +
-                "username TEXT UNIQUE, " +
-                "profileImg TEXT, " +
-                "socialLinks TEXT)");
+        db.execSQL("CREATE TABLE customer ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "name TEXT, "
+                + "username TEXT UNIQUE, "
+                + "profileImg TEXT, "
+                + "socialLinks TEXT)");
 
-        // Product table with location column added
-        db.execSQL("CREATE TABLE product (" +
-                "id INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                "name TEXT NOT NULL, " +
-                "price REAL NOT NULL, " +
-                "location TEXT, " +
-                "owner_id INTEGER, " +
-                "FOREIGN KEY(owner_id) REFERENCES owner(id))");
+        db.execSQL("CREATE TABLE product ("
+                + "id INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + "name TEXT NOT NULL, "
+                + "price REAL NOT NULL, "
+                + "location TEXT, "
+                + "owner_id INTEGER, "
+                + "FOREIGN KEY(owner_id) REFERENCES owner(id))");
     }
 
     @Override

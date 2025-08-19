@@ -9,6 +9,8 @@ import android.widget.*;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import database.DatabaseHelper;
+
 public class SignupActivity extends AppCompatActivity {
 
     EditText signupName, signupUsername, signupPassword;

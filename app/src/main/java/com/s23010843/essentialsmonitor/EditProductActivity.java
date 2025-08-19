@@ -24,13 +24,12 @@ import java.util.List;
 import java.util.Locale;
 
 public class EditProductActivity extends AppCompatActivity implements OnMapReadyCallback {
-
     EditText inputName, inputPrice, inputLocation, searchLocation;
     Button updateBtn, deleteBtn, searchBtn;
     GoogleMap mMap;
     String productId;
     Handler mainHandler = new Handler(Looper.getMainLooper());
-    private double lat, lon;
+    private double lat = 0, lon = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,13 +60,12 @@ public class EditProductActivity extends AppCompatActivity implements OnMapReady
         updateBtn.setOnClickListener(v -> {
             String name = inputName.getText().toString().trim();
             String priceStr = inputPrice.getText().toString().trim();
-            String locationStr = inputLocation.getText().toString().trim();
             if (name.isEmpty() || priceStr.isEmpty()) {
                 toast("Name & price required");
                 return;
             }
             double price = Double.parseDouble(priceStr);
-            updateProduct(productId, name, price, locationStr);
+            updateProduct(productId, name, price, inputLocation.getText().toString().trim());
         });
 
         deleteBtn.setOnClickListener(v -> deleteProduct(productId));
@@ -78,6 +76,10 @@ public class EditProductActivity extends AppCompatActivity implements OnMapReady
     @Override
     public void onMapReady(@NonNull GoogleMap googleMap) {
         mMap = googleMap;
+        if (lat != 0 || lon != 0) {
+            LatLng point = new LatLng(lat, lon);
+            updateMap(point, "Location");
+        }
     }
 
     private void loadProductDetails(String id) {
@@ -103,7 +105,6 @@ public class EditProductActivity extends AppCompatActivity implements OnMapReady
                     inputName.setText(name);
                     inputPrice.setText(String.valueOf(price));
                     inputLocation.setText(locationTxt);
-
                     if (mMap != null && (lat != 0 || lon != 0)) {
                         LatLng point = new LatLng(lat, lon);
                         updateMap(point, "Location");
@@ -138,11 +139,14 @@ public class EditProductActivity extends AppCompatActivity implements OnMapReady
                 os.close();
 
                 int response = conn.getResponseCode();
+
                 mainHandler.post(() -> {
                     if (response == HttpURLConnection.HTTP_OK) {
                         toast("Updated");
                         finish();
-                    } else toast("Update failed");
+                    } else {
+                        toast("Update failed");
+                    }
                 });
             } catch (Exception e) {
                 e.printStackTrace();
@@ -158,11 +162,14 @@ public class EditProductActivity extends AppCompatActivity implements OnMapReady
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("DELETE");
                 int response = conn.getResponseCode();
+
                 mainHandler.post(() -> {
                     if (response == HttpURLConnection.HTTP_OK) {
                         toast("Deleted");
                         finish();
-                    } else toast("Deletion failed");
+                    } else {
+                        toast("Deletion failed");
+                    }
                 });
             } catch (Exception e) {
                 e.printStackTrace();
@@ -177,17 +184,18 @@ public class EditProductActivity extends AppCompatActivity implements OnMapReady
                 Geocoder geocoder = new Geocoder(this, Locale.getDefault());
                 List<Address> list = geocoder.getFromLocationName(locationName, 1);
                 if (list != null && !list.isEmpty()) {
-                    Address addr = list.get(0);
-                    LatLng point = new LatLng(addr.getLatitude(), addr.getLongitude());
-                    lat = point.latitude;
-                    lon = point.longitude;
+                    Address address = list.get(0);
+                    lat = address.getLatitude();
+                    lon = address.getLongitude();
 
                     mainHandler.post(() -> {
-                        inputLocation.setText(addr.getAddressLine(0));
-                        updateMap(point, "Selected");
+                        inputLocation.setText(address.getAddressLine(0));
+                        updateMap(new LatLng(lat, lon), "Selected");
                     });
-                } else mainHandler.post(() -> toast("Not found"));
-            } catch (IOException e) {
+                } else {
+                    mainHandler.post(() -> toast("Not found"));
+                }
+            } catch (Exception e) {
                 e.printStackTrace();
                 mainHandler.post(() -> toast("Error searching location"));
             }

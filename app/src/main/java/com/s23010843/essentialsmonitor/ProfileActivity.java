@@ -11,9 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.File;
 
+import database.DatabaseHelper;
+
 public class ProfileActivity extends AppCompatActivity {
 
-    TextView nameText, usernameText, socialLinksText;
+    TextView tvName, tvUsername, tvSocialLinks;
     ImageView profileImg;
     DatabaseHelper db;
 
@@ -23,15 +25,20 @@ public class ProfileActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile);
 
-        nameText = findViewById(R.id.nameText);
-        usernameText = findViewById(R.id.usernameText);
-        socialLinksText = findViewById(R.id.socialLinksText);
+        tvName = findViewById(R.id.tvName);
+        tvUsername = findViewById(R.id.tvUsername);
+        tvSocialLinks = findViewById(R.id.tvSocialLinks);
         profileImg = findViewById(R.id.profileImg);
 
         db = new DatabaseHelper(this);
 
         SharedPreferences prefs = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
         String username = prefs.getString("username", null);
+        String profileUsername = R.string.profile_username + username;
+        String nameFromDB = db.getUserNameByUsername(username);
+        String profileName = R.string.profile_name + nameFromDB;
+        String socialLink = db.getSocialLinksByUsername(username);
+        String imagePath = db.getProfileImagePath(username);
 
         if (username == null || username.isEmpty()) {
             toastMessage("No logged in user found");
@@ -39,18 +46,13 @@ public class ProfileActivity extends AppCompatActivity {
             return;
         }
 
-        usernameText.setText("Username: " + username);
-
         // Load user info
-        String nameFromDB = db.getUserNameByUsername(username);
-        String socialLink = db.getSocialLinksByUsername(username);
-        String imagePath = db.getProfileImagePath(username);
+        tvName.setText(profileName);
+        tvUsername.setText(profileUsername);
+        tvSocialLinks.setText(socialLink);
+        tvSocialLinks.setTextColor(R.color.link);
 
-        nameText.setText("Name: " + nameFromDB);
-        socialLinksText.setText(socialLink);
-        socialLinksText.setTextColor(R.color.link);
-
-        socialLinksText.setOnClickListener(v -> {
+        tvSocialLinks.setOnClickListener(v -> {
             if (!socialLink.equals("Not provided")) {
                 Intent browserIntent = new Intent(Intent.ACTION_VIEW, Uri.parse(socialLink));
                 startActivity(browserIntent);
@@ -73,7 +75,7 @@ public class ProfileActivity extends AppCompatActivity {
 
     public void goToEditProfile(android.view.View view) {
         Intent intent = new Intent(this, EditProfileActivity.class);
-        intent.putExtra("username", usernameText.getText().toString().replace("Username: ", ""));
+        intent.putExtra("username", tvUsername.getText().toString().replace("Username: ", ""));
         startActivity(intent);
     }
 

@@ -1,6 +1,8 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:gravity="center"
     android:orientation="vertical"
     android:padding="16dp">
 
@@ -8,20 +10,24 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="20dp"
-        android:text="Settings"
+        android:text="@string/settings"
         android:textSize="20sp" />
 
     <Switch
         android:id="@+id/themeSwitch"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Dark Mode" />
+        android:minHeight="48dp"
+        android:text="@string/dark_mode"
+        android:visibility="gone"
+        tools:ignore="UseSwitchCompatOrMaterialXml" />
 
     <Button
         android:id="@+id/logoutBtn"
-        android:layout_width="match_parent"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="30dp"
-        android:text="Logout"
-        android:textColor="@android:color/holo_red_dark" />
+        android:maxWidth="320dp"
+        android:text="@string/logout"
+        android:textColor="@color/btn_text" />
 </LinearLayout>

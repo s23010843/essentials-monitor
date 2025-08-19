@@ -13,7 +13,7 @@ public class MainActivity extends AppCompatActivity {
     TextView tvWelcome;
     SharedPreferences prefs;
     Button btnProduct, btnProfile, settingsBtn, mapBtn, sensorBtn, customerProductBtn;
-    String role = "customer";//"customer", "owner";
+    String role;
 
     @SuppressLint("SetTextI18n")
     @Override
@@ -27,24 +27,22 @@ public class MainActivity extends AppCompatActivity {
         mapBtn = findViewById(R.id.mapBtn);
         sensorBtn = findViewById(R.id.sensorBtn);
         customerProductBtn = findViewById(R.id.customerProductBtn);
-
         tvWelcome = findViewById(R.id.tvWelcome);
-        prefs = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
 
-        // Simulated user data
-        role = prefs.getString("role", role);
+        prefs = getSharedPreferences("MyAppPrefs", MODE_PRIVATE);
+        role = prefs.getString("role", "customer"); // safer fallback
+
         tvWelcome.setText("Welcome, " + role);
 
-        if (role.equals("owner")) {
+        if (role.equalsIgnoreCase("owner")) {
             btnProduct.setVisibility(View.VISIBLE);
             btnProduct.setOnClickListener(v -> {
                 pageRoute(ProductListActivity.class);
-                toastMessage("Owner, you can update now");
+                toastMessage("Owner, you can update products now");
             });
         } else {
-            // Show customer-specific UI
-            pageRoute(CustomerProductActivity.class);
-            toastMessage("customer, You cannot access");
+            btnProduct.setVisibility(View.GONE);
+            toastMessage("Customer: limited access");
         }
 
         btnProfile.setOnClickListener(v -> pageRoute(ProfileActivity.class));

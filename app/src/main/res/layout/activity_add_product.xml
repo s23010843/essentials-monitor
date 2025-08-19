@@ -4,28 +4,35 @@
     android:orientation="vertical"
     android:padding="16dp">
 
+
     <EditText
         android:id="@+id/inputName"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Product Name" />
+        android:autofillHints="name"
+        android:hint="@string/product_name" />
 
     <EditText
         android:id="@+id/inputPrice"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Price"
+        android:autofillHints="price"
+        android:hint="@string/price"
         android:inputType="numberDecimal" />
+
 
     <EditText
         android:id="@+id/inputLocation"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Location" />
+        android:hint="@string/location" />
 
     <Button
         android:id="@+id/saveBtn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Save Product" />
+        android:layout_gravity="center_horizontal"
+        android:layout_margin="20dp"
+        android:maxWidth="320dp"
+        android:text="@string/save_product" />
 </LinearLayout>

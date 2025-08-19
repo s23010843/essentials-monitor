@@ -21,7 +21,6 @@ import java.util.ArrayList;
 import static utils.ApiConfig.PRODUCTS_ENDPOINT;
 
 public class ProductListActivity extends AppCompatActivity {
-
     private static final String TAG = "ProductListActivity";
     private static final String API_URL = PRODUCTS_ENDPOINT;
 
@@ -30,7 +29,6 @@ public class ProductListActivity extends AppCompatActivity {
     ArrayList<String> productDisplayList = new ArrayList<>();
     ArrayList<String> productIds = new ArrayList<>();
     ArrayAdapter<String> adapter;
-
     private final Handler mainHandler = new Handler(Looper.getMainLooper());
 
     @Override
@@ -46,18 +44,24 @@ public class ProductListActivity extends AppCompatActivity {
 
         loadProductsFromApi();
 
-        addProductBtn.setOnClickListener(v -> pageRoute(AddProductActivity.class));
+        addProductBtn.setOnClickListener(v -> startActivity(new Intent(this, AddProductActivity.class)));
 
         productList.setOnItemClickListener((parent, view, position, id) -> {
             if (position >= 0 && position < productIds.size()) {
-                String productId = productIds.get(position);
+                String selectedId = productIds.get(position);
                 Intent intent = new Intent(this, EditProductActivity.class);
-                intent.putExtra("product_id", productId);
-                pageRoute(EditProductActivity.class);
+                intent.putExtra("product_id", selectedId);
+                startActivity(intent);
             } else {
                 Log.e(TAG, "Clicked position out of bounds: " + position);
             }
         });
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        loadProductsFromApi();
     }
 
     private void loadProductsFromApi() {
@@ -66,43 +70,38 @@ public class ProductListActivity extends AppCompatActivity {
                 URL url = new URL(API_URL);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
                 conn.setRequestMethod("GET");
-
                 int responseCode = conn.getResponseCode();
                 if (responseCode != HttpURLConnection.HTTP_OK) {
                     Log.e(TAG, "Server returned: " + responseCode);
+                    mainHandler.post(() -> toast("Server error: " + responseCode));
                     return;
                 }
 
                 BufferedReader reader = new BufferedReader(new InputStreamReader(conn.getInputStream()));
                 StringBuilder sb = new StringBuilder();
                 String line;
-                while ((line = reader.readLine()) != null) {
-                    sb.append(line);
-                }
+                while ((line = reader.readLine()) != null) sb.append(line);
                 reader.close();
 
-                String result = sb.toString();
-                JSONArray jsonArray = new JSONArray(result);
-                ArrayList<String> tempDisplayList = new ArrayList<>();
+                JSONArray jsonArray = new JSONArray(sb.toString());
+                ArrayList<String> tempDisplay = new ArrayList<>();
                 ArrayList<String> tempIds = new ArrayList<>();
 
                 for (int i = 0; i < jsonArray.length(); i++) {
                     JSONObject product = jsonArray.getJSONObject(i);
-                    String id = product.getString("_id");
-                    String name = product.getString("name");
-                    double price = product.getDouble("price");
-                    double location = product.getDouble("location");
-
-                    tempIds.add(id);
-                    tempDisplayList.add(
-                            name + "\n" + "$" + price + "\n" + location);
+                    tempIds.add(product.getString("_id"));
+                    tempDisplay.add(
+                            product.getString("name") +
+                                    "\n$" + product.getDouble("price") +
+                                    "\n" + product.optString("location", "N/A")
+                    );
                 }
 
                 mainHandler.post(() -> {
                     productIds.clear();
                     productDisplayList.clear();
                     productIds.addAll(tempIds);
-                    productDisplayList.addAll(tempDisplayList);
+                    productDisplayList.addAll(tempDisplay);
                     adapter.notifyDataSetChanged();
                 });
 
@@ -113,17 +112,7 @@ public class ProductListActivity extends AppCompatActivity {
         }).start();
     }
 
-    @Override
-    protected void onResume() {
-        super.onResume();
-        loadProductsFromApi();
-    }
-
     private void toast(String msg) {
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-    }
-
-    public void pageRoute(Class<?> page) {
-        startActivity(new Intent(this, page));
     }
 }

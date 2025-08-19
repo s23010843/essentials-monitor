@@ -11,6 +11,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.io.*;
 
+import database.DatabaseHelper;
+
 public class EditProfileActivity extends AppCompatActivity {
 
     private static final int PICK_IMAGE_REQUEST = 1;

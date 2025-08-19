@@ -158,23 +158,27 @@ databaseManager.addStore(name, address, lat, lng, phone, hours, callback);
 /essentials-monitor                # Root project directory
 ├── /app/                          # Main Android app module
 │   ├── /build/                    # Build outputs (auto-generated)
-│   ├── /release/                  # Optional: release-related assets (e.g., signing configs)
+│   ├── /release/                  # release-related assets (e.g., signing configs)
 │   └── /src/                      # Source code and resources
 │       ├── /main/                 # Main source set
 │       │   ├── /java/             # Java/Kotlin source files
+│       │   │   ├── /utils/
+│       │   │   │   ├── ApiConfig.java             # ApiConfig File
+│       │   │   │   └── CustomUtils.java           # Custom Utils Files
+│       │   │   ├── /model/
+│       │   │   │   └── User.java                  # User Model
+│       │   │   ├── /database/
+│       │   │   │   └── DatabaseHelper.java        # SQLite database operations
 │       │   │   └── /com/s23010843/essentialsmonitor/
-│       │   │       ├── DatabaseHelper.java        # SQLite database operations
 │       │   │       ├── MongoDBManager.java        # MongoDB Atlas operations (MONGODB_URI only)
 │       │   │       ├── DatabaseManager.java       # Unified database interface (anti-duplication)
 │       │   │       ├── MapViewActivity.java       # Enhanced maps with real-time updates
 │       │   │       └── GoogleMapManager.java      # Map marker and CRUD operations
-│       │   ├── /res/              # Resources (layouts, drawables, strings, etc.)
+│       │   ├── /res/                              # Resources (layouts, drawables, strings, etc.)
 │       │   │   ├── /layout/
-│       │   │   │   ├── activity_map_view_enhanced.xml  # Enhanced map UI
-│       │   │   │   ├── dialog_add_store.xml            # Store creation dialog
-│       │   │   │   └── dialog_store_details.xml        # Store details display
+│       │   │   │   └── activity_....xml           # XML Files
 │       │   │   └── /values/
-│       │   │       └── colors.xml                      # Enhanced color scheme
+│       │   │       └── colors.xml                 # Enhanced color scheme
 │       │   └── AndroidManifest.xml  # App manifest
 │       ├── /test/                 # Unit tests
 │       └── /androidTest/          # Instrumentation tests

@@ -9,12 +9,12 @@
         android:id="@+id/sensorName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Sensor: Temperature"
+        android:text="@string/sensor_temperature"
         android:textSize="20sp" />
 
     <TextView
         android:id="@+id/sensorValue"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Value: --" />
+        android:text="@string/value" />
 </LinearLayout>

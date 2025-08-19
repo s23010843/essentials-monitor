@@ -110,7 +110,8 @@ public class MapActivity extends AppCompatActivity implements OnMapReadyCallback
                         : "Unknown location";
                 handler.post(() -> addressTv.setText(addressText));
             } catch (IOException e) {
-                handler.post(() -> addressTv.setText("Error getting address"));
+                String i = "Error getting address";
+                handler.post(() -> addressTv.setText(i));
             }
         }).start();
     }

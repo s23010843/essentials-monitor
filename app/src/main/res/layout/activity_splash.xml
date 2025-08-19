@@ -45,7 +45,7 @@
             android:layout_marginBottom="8dp"
             android:fontFamily="sans-serif-medium"
             android:text="@string/app_name"
-            android:textColor="@color/text_white"
+            android:textColor="#2D2D2F"
             android:textSize="32sp"
             android:textStyle="bold" />
 
@@ -55,8 +55,8 @@
             android:layout_height="wrap_content"
             android:alpha="0.9"
             android:fontFamily="sans-serif-light"
-            android:text="Smart shopping made simple"
-            android:textColor="@color/text_white"
+            android:text="@string/welcome_intro"
+            android:textColor="@color/black"
             android:textSize="16sp" />
 
     </LinearLayout>
@@ -77,12 +77,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="16dp"
-        android:alpha="0.7"
+        android:background="@color/overlay"
+        android:padding="4dp"
+        android:shadowColor="#80000000"
+        android:shadowDx="1"
+        android:shadowDy="1"
+        android:shadowRadius="1"
         android:text="@string/app_version"
-        android:textColor="@color/text_white"
+        android:textColor="#FFFFFF"
         android:textSize="12sp"
         app:layout_constraintBottom_toTopOf="@+id/loading_progress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,4 @@
-package com.s23010843.essentialsmonitor;
+package model;
 
 public class User {
     public String name, username, password, profileImg, socialLinks;

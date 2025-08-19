@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.google.android.material.textfield.TextInputEditText;
 
+import database.DatabaseHelper;
+
 public class LoginActivity extends AppCompatActivity {
 
     TextInputEditText username, password;
